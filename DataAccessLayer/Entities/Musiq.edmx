@@ -602,7 +602,7 @@
           <End Role="Playlists" Type="Self.Playlist" Multiplicity="*" />
           <End Role="Songs" Type="Self.Song" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="onSnap" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MusiqEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accounts" EntityType="Self.Account" />
           <EntitySet Name="Images" EntityType="Self.Image" />
           <EntitySet Name="OnSnapAlbums" EntityType="Self.OnSnapAlbum" />
@@ -661,7 +661,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="jukeboxModelStoreContainer" CdmEntityContainer="onSnap">
+        <EntityContainerMapping StorageEntityContainer="jukeboxModelStoreContainer" CdmEntityContainer="MusiqEntities">
           <EntitySetMapping Name="Accounts">
             <EntityTypeMapping TypeName="jukeboxModel.Account">
               <MappingFragment StoreEntitySet="Accounts">

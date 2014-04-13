@@ -48,8 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogicLayer\BusinessLogicLayer.cs" />
     <Compile Include="Entities\Account.cs">
-      <DependentUpon>OnSnap.tt</DependentUpon>
+      <DependentUpon>Musiq.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\AspNetRole.cs">
       <DependentUpon>OnSnapAccounts.tt</DependentUpon>
@@ -67,17 +68,17 @@
       <DependentUpon>OnSnapAccounts.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Image.cs">
-      <DependentUpon>OnSnap.tt</DependentUpon>
+      <DependentUpon>Musiq.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\OnSnap.Context.cs">
+    <Compile Include="Entities\Musiq.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OnSnap.Context.tt</DependentUpon>
+      <DependentUpon>Musiq.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\OnSnap.cs">
+    <Compile Include="Entities\Musiq.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OnSnap.tt</DependentUpon>
+      <DependentUpon>Musiq.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Musiq.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -100,25 +101,25 @@
       <DependentUpon>MusiqAccounts.edmx</DependentUpon>
     </Compile>
     <Compile Include="Entities\OnSnapAlbum.cs">
-      <DependentUpon>OnSnap.tt</DependentUpon>
+      <DependentUpon>Musiq.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\OnSnapImage.cs">
-      <DependentUpon>OnSnap.tt</DependentUpon>
+      <DependentUpon>Musiq.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Playlist.cs">
-      <DependentUpon>OnSnap.tt</DependentUpon>
+      <DependentUpon>Musiq.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Role.cs">
       <DependentUpon>OnSnapAccounts.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Room.cs">
-      <DependentUpon>OnSnap.tt</DependentUpon>
+      <DependentUpon>Musiq.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Song.cs">
-      <DependentUpon>OnSnap.tt</DependentUpon>
+      <DependentUpon>Musiq.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\SongPlay.cs">
-      <DependentUpon>OnSnap.tt</DependentUpon>
+      <DependentUpon>Musiq.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\User.cs">
       <DependentUpon>OnSnapAccounts.tt</DependentUpon>
@@ -132,33 +133,43 @@
     <Compile Include="Entities\UserSecret.cs">
       <DependentUpon>OnSnapAccounts.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountList.cs" />
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\AlbumModel.cs" />
+    <Compile Include="Models\ArtistModel.cs" />
+    <Compile Include="Models\GenreModel.cs" />
+    <Compile Include="Models\PlaylistModel.cs" />
+    <Compile Include="Models\ProfileWrapper.cs" />
+    <Compile Include="Models\RoomList.cs" />
+    <Compile Include="Models\RoomModel.cs" />
+    <Compile Include="Models\SongModel.cs" />
+    <Compile Include="Models\SongUploadMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Entities\Musiq.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Musiq.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <Compile Include="Repositories\MusiqRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="Entities\OnSnap.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Musiq.edmx</DependentUpon>
-      <LastGenOutput>OnSnap.Context.cs</LastGenOutput>
-    </None>
-    <None Include="Entities\Musiq.edmx.diagram">
-      <DependentUpon>Musiq.edmx</DependentUpon>
-    </None>
-    <None Include="Entities\OnSnap.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Musiq.edmx</DependentUpon>
-      <LastGenOutput>OnSnap.cs</LastGenOutput>
-    </None>
     <EntityDeploy Include="Entities\MusiqAccounts.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MusiqAccounts.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Entities\Musiq.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Musiq.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\Musiq.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Musiq.edmx</DependentUpon>
+      <LastGenOutput>Musiq.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Entities\Musiq.edmx.diagram">
+      <DependentUpon>Musiq.edmx</DependentUpon>
+    </None>
+    <None Include="Entities\Musiq.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Musiq.edmx</DependentUpon>
+      <LastGenOutput>Musiq.cs</LastGenOutput>
+    </None>
     <None Include="Entities\OnSnapAccounts.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MusiqAccounts.edmx</DependentUpon>

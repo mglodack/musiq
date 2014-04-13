@@ -40,3 +40,56 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+/* Profile */
+.musiq-container {
+    margin-top: 30px;
+}
+
+.btn-margin {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+/* Responsive Media Queries */
+.portrait-only {
+    display: none;
+}
+
+@media only screen and ( max-width: 768px ) {
+
+    .mobile-hide {
+        display: none;
+    }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+    .portrait-hide {
+        display: none;
+    }
+
+    .portrait-only {
+        display: block;
+    }
+
+    .portrait-bold {
+        font-weight: bold;
+    }
+
+    .album-artwork {
+        max-width: 40px;
+    }
+
+
+    #table-artwork {
+        width: 20%;
+        min-width: 40px;
+    }
+
+    #table-song {
+        width: 80%;
+    }
+
+}

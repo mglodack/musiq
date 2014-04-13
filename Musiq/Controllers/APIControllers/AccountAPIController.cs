@@ -11,7 +11,7 @@ using System.Web.Script.Services;
 namespace Musiq.Controllers
 {
     [RoutePrefix("api")]
-    public class MusiqAPIController : ApiController
+    public class AccountAPIController : ApiController
     {
         [Route("login/{username}/{password}")]
         [HttpGet]

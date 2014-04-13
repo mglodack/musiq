@@ -13,10 +13,10 @@ namespace DataAccessLayer.Entities
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class onSnap : DbContext
+    public partial class MusiqEntities : DbContext
     {
-        public onSnap()
-            : base("name=onSnap")
+        public MusiqEntities()
+            : base("name=MusiqEntities")
         {
         }
     
