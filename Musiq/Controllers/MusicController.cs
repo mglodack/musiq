@@ -56,7 +56,8 @@ namespace Musiq.Controllers
             SongModel song;
 
             //Declaring the directory that the song will be uploaded to and performing upload.
-            string MusicDirectory = HttpContext.Server.MapPath("~/Music/") + fileName;
+            string MusicDirectory = System.Web.HttpContext.Current.Server.MapPath("~/Music/") + fileName;
+            
 
             file.SaveAs(MusicDirectory);
             TagLib.File metadata = TagLib.File.Create(MusicDirectory);
