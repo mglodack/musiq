@@ -1,17 +1,19 @@
 ﻿
 <div class="musiq-container">
-    <div class="pull-right" style="width: 50%">
-        <input ng-model="search">
-        <a class="btn btn-primary btn-margin pull-right mobile-hide" data-toggle="modal" href="#profileModal" id="uploadButton">
-            <span class="glyphicon glyphicon-music"></span>
-            Upload Music
-        </a>
-        <a class="btn btn-primary btn-margin pull-right portrait-hide" data-toggle="modal" href="#createPlaylistModal">
-            <span class="glyphicon glyphicon-plus"></span>
-            Create Playlist
-        </a>
-    </div>
     <div class="row">
+        <div class="pull-right">
+            <input ng-model="search.SongTitle">
+            <a class="btn btn-primary btn-margin mobile-hide" data-toggle="modal" href="#profileModal" id="uploadButton">
+                <span class="glyphicon glyphicon-music"></span>
+                Upload Music
+            </a>
+            <a class="btn btn-primary btn-margin portrait-hide" data-toggle="modal" href="#createPlaylistModal">
+                <span class="glyphicon glyphicon-plus"></span>
+                Create Playlist
+            </a>
+        </div>
+    </div>
+    <div class="row" id="table">
         @Html.Partial("_MusicPartial")
     </div>
 </div>
