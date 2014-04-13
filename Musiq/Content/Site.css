@@ -6,9 +6,19 @@
 
 body {
     padding-top: 50px;
-    padding-bottom: 20px; 
+    padding-bottom: 20px;
+    /**temp*/
+    /*width: 1899px;
+position: absolute;
+left: 100px;*/ 
+/****/
     font-family: "HelveticaLight";
 	font-weight: 300;
+}
+/**navigation**/
+.navbar-inverse {
+background-color: rgba(0,0,0,1);
+border-color: rgba(0,0,0,1);
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -81,6 +91,47 @@ input[type="checkbox"].input-validation-error {
   display:none;
 }
 
+.sidr {
+    display: none;
+    position: absolute;
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    z-index: 0;
+    width: 260px;
+    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+    font-size: 15px;
+    background: rgba(0,0,0,1);
+    color: white;
+}
+.sidr ul {
+display: block;
+margin: 0 0 15px;
+padding: 0;
+}
+.sidr ul li {
+display: block;
+margin: 0;
+line-height: 48px;
+font-family: 'Exo', sans-serif;
+font-size: 1.25em;
+color: white;
+}
+.navbar-container{
+    padding-right: 15px;
+    margin-right: auto;
+
+}
+.sidr ul li:hover{
+    border-left-color:rgb(81, 199, 209);
+    border-left:solid;
+    border-left-width:2px;
+    border-left-color:rgb(81, 199, 209);
+}
+.sidr-links {
+    color: rgb(81, 199, 209);
+    text-decoration: none;
+}
 /* Music Table */
 
 #table-length {

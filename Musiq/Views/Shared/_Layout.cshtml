@@ -14,7 +14,11 @@
     @if (User.Identity.Name != "")
     { 
         <div class="navbar navbar-inverse navbar-fixed-top">
+            <button id="sidr-btn" class="btn btn-danger btn-sm queue-button pull-left" style="margin-top: 15px; margin-left: 10px; margin-bottom: 15px; background-color: #272323; border-color: rgb(81, 199, 209); " type="button">
+                <span class="glyphicon glyphicon-list"></span>
+            </button>
             <div class="container">
+                
                 <div class="navbar-header" style="float:right;">
                     @Html.ActionLink("urMusiQ", "Index", "Home", null, new { @class = "logo-navbar" })
                 </div>
@@ -28,6 +32,26 @@
                 </div>*@
             </div>
         </div>
+        <div id="sidr" class="sidr left" style="display: block; left: 0px;">
+            @*<div class="row">
+                <div class="col-sm-12">
+                    <button class="btn btn-danger btn-sm queue-button pull-right" style="margin-top: 15px; margin-bottom:15px; margin-right:10px; background-color: #272323; border-color: #4FC8D3; " type="button">
+                        <span class="glyphicon glyphicon-list"></span>
+                    </button>
+                </div>
+            </div>*@
+           <div class="row">
+               <div class="col-sm-12 text-center" style="margin-top:61px;">
+                   <img class="img-circle" style="width:80px; height:80px;" src="~/Content/images/Koala.jpg" />
+                   <h4 class="site-font">Julio Garcia</h4>
+               </div>
+           </div>
+          <ul class="text-center">
+            <li class=""><a class="sidr-links" id="urProfile" href="#">urProfile</a></li>
+            <li><a class="sidr-links" id="urQueue" href="#">urQueue</a></li>
+            <li><a class="sidr-links" href="#">Logout</a></li>
+          </ul>
+        </div>
     }
     <div class="container body-content">
         @RenderBody()
@@ -40,5 +64,48 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+        var toggle = true;
+        $(document).ready(function () {        
+            $('#sidr-btn').click(function (e) {
+                $(this).attr("disabled", "disabled");
+                if (toggle) {
+                    
+                    toggle = false;
+                    console.log(toggle);
+                    $('#sidr').animate({
+                        left: "-=260"
+                    }, 500), $('body').attr("position", "absolute");
+                } else
+                {
+                    toggle = true;
+                    console.log(toggle);
+                    $('#sidr').animate({
+                        left: "+=260"
+                    }, 500), $('body').attr("position", "fixed");
+                }
+                setTimeout('$("#sidr-btn").removeAttr("disabled")',500);
+            });
+            $(function () {
+                var prev;
+                $('#urProfile').hover(function () {
+                    prev = $(this).text();
+                    $(this).text("urProfile");
+                }, function () {
+                    $(this).text(prev)
+                });
+            });
+            $(function () {
+                var prev;
+                $('#urQueue').hover(function () {
+                    prev = $(this).text();
+                    $(this).text("urQueue");
+                }, function () {
+                    $(this).text(prev)
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
