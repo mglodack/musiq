@@ -28,5 +28,21 @@ namespace DataAccessLayer.BusinessLogicLayer
             var list = _context.GetSongs().Take(numberOfSongs).ToList();
             return list;
         }
+
+        public bool SongExists(string filename)
+        {
+            return GetSongs().Any(s => s.FilePath == filename);
+        }
+
+        public void Add(SongModel song)
+        {
+            _context.Add(song);
+        }
+
+        public SongModel GetSong(string fileName)
+        {
+            SongModel song = _context.GetSongs().FirstOrDefault(s => s.FilePath == fileName);
+            return song;
+        }
     }
 }
