@@ -38,7 +38,7 @@
 <script type="text/javascript" src="~/Scripts/Upload/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="~/Scripts/Upload/jquery.iframe-transport.js"></script>
 <script type="text/javascript" src="~/Scripts/Upload/jquery.fileupload.js"></script>
-    <script>
+    <script>    
         $(document).ready(function(){
             $("#uploadButton").click(function (event) {
                 event.preventDefault();
@@ -49,9 +49,62 @@
                 $('.uploader').fadeOut('slow');
             });
         });
+        $('.uploader').on(
+    'dragover',
+    function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+)
+        $('uploader').on(
+            'dragenter',
+            function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        )
+        $('.uploader').on(
+    'drop',
+    function (e) {
+        e.preventDefault();
+        $('.uploader').fadeOut('slow');
+    }
+);
     </script>
 <script>
-    //Upload
+    //$('drag-target-selector').on('drop', function (event) {  
+    //});
+    //$.fn.draghover = function (options) {
+    //    return this.each(function () {
+
+    //        var collection = $(),
+    //            self = $(this);
+
+    //        self.on('dragenter', function (e) {
+    //            if (collection.length === 0) {
+    //                self.trigger('draghoverstart');
+    //            }
+    //            collection = collection.add(e.target);
+    //        });
+
+    //        self.on('dragleave drop', function (e) {
+    //            collection = collection.not(e.target);
+    //            if (collection.length === 0) {
+    //                self.trigger('draghoverend');
+    //            }
+    //        });
+    //    });
+    //};
+    //$(window).draghover().on({
+    //    'draghoverstart': function () {
+    //        $('.uploader').fadeOut('slow');
+    //    },
+    //    'draghoverend': function () {
+    //        $('.uploader').fadeOut('slow');
+    //    }
+
+    //});
+    Upload
     $(function () {
         $('#fileupload').fileupload({
             dataType: 'json',
@@ -90,7 +143,6 @@
             }
 
         });
-        $('.uploader').fadeOut('slow');
     });
 
     //Right-Click Dropdown
