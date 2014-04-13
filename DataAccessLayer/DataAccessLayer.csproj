@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogicLayer\BusinessLogicLayer.cs" />
+    <Compile Include="Conversions\ModelConversions.cs" />
     <Compile Include="Entities\Account.cs">
       <DependentUpon>Musiq.tt</DependentUpon>
     </Compile>
