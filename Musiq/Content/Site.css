@@ -69,9 +69,11 @@ input[type="checkbox"].input-validation-error {
 #music-container {
     margin-top: 10px;
 }
+
 .logo-navbar{
     font-family: 'Exo', sans-serif;
     color: white;
+    line-height: 55px;
     font-size: 3em;
     text-decoration: none;
 }
@@ -111,9 +113,22 @@ padding: 0;
 display: block;
 margin: 0;
 line-height: 48px;
-font-family: 'Exo', sans-serif;
+font-family: "HelveticaLight";
 font-size: 1.25em;
 color: white;
+}
+.sidr ul li a{
+    display:inline-block;
+}
+.sidr ul li a:active{
+    border-left-color:rgb(81, 199, 209);
+    border-left:solid;
+    border-left-width:2px;
+    border-left-color:rgb(81, 199, 209);
+    border-right:solid;
+    border-right-width:2px;
+    border-right-color:rgb(0,0,0);
+    border-right-width:2px;
 }
 .navbar-container{
     padding-right: 15px;
@@ -125,6 +140,10 @@ color: white;
     border-left:solid;
     border-left-width:2px;
     border-left-color:rgb(81, 199, 209);
+    border-right:solid;
+    border-right-width:2px;
+    border-right-color:rgb(0,0,0);
+    border-right-width:2px;
 }
 .sidr-links {
     color: rgb(81, 199, 209);
@@ -229,6 +248,9 @@ and (max-width : 320px) {
 }
 
 /*Login Page**/
+input[type="button"],select{
+    outline:none;
+}
 .home-title{
     font-family: 'Exo', sans-serif;
     color:white;
@@ -242,6 +264,17 @@ and (max-width : 320px) {
 #login {
     width:25%;
    margin: 0 auto;
+}
+#login2 {
+    width:25%;
+   margin: 0 auto;
+}
+.register{
+    text-align: right;
+    margin-top: 8px;
+    min-width: 215px;
+    margin:0 auto;
+    width:25%;
 }
 .fieldset-login{
     margin-bottom: 1em;
@@ -286,7 +319,7 @@ and (max-width : 320px) {
     font-size: 1.35em;
 }
 .login-width{
-    min-width: 196px;
+    min-width: 215px;
 }
 #login_page{
     background-color: rgb(207, 207, 207);
@@ -295,6 +328,14 @@ and (max-width : 320px) {
 a:hover{
     text-decoration:none;
     color:white;
+}
+@media (max-width : 1400px){
+    .home-title{
+        font-size:6em;
+    }
+    .logo-navbar{
+        font-size:2em;
+    }
 }
 
 /* Special Effects */
@@ -404,4 +445,14 @@ margin-top: 15px;
 -ms-transform: translateX(-50%) translateY(-50%);
 transform: translateX(-50%) translateY(-50%);
 color:white;
+}
+
+@media (max-width : 768px){
+    .home-title{
+        font-size:4em;
+    }
+    .logo-navbar{
+       visibility:hidden;
+       height:0px;
+    }
 }

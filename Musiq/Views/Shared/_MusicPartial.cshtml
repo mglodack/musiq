@@ -23,8 +23,8 @@
                 <th id="table-song">Song Title</th>
                 <th id="table-artist" class="portrait-hide">Artist</th>
                 <th id="table-album" class="mobile-hide">Album</th>
-                <th id="table-genre">Genre</th>
-                <th id="table-length" class="portrait-hide">Length</th>
+                <th id="table-genre" class="portrait-hide mobile-hide">Genre</th>
+                <th id="table-length" class="portrait-hide mobile-hide">Length</th>
             </tr>
         </thead>
         <tbody>
@@ -44,7 +44,7 @@
                 <td class="portrait-hide"><div class="text-wrap"><span class="artist-span">{{song.Artist}}</span><input class="artist-input" hidden /></div></td>
                 <td class="mobile-hide"><div class="text-wrap"><span class="album-span">{{song.Album}}</span><input class="album-input" hidden /></div></td>
                 <td class="mobile-hide"><div class="text-wrap"><span class="album-span">{{song.Genre}}</span><input class="genre-input" hidden /></div></td>
-                <td class="portrait-hide"><div class="text-wrap"><span>{{song.Length}}</span><input hidden /></div></td>
+                <td class="portrait-hide mobile-hide"><div class="text-wrap"><span>{{song.Length}}</span><input hidden /></div></td>
             </tr>
         </tbody>
 </table>
