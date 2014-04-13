@@ -9,6 +9,8 @@
             $http.get('/api/music/150').success(function (data) {
                 $scope.songs = data;
                 $(".loader").fadeOut("slow");
+                $.getScript("../scripts/music/audioplayback.js").done(function (script, textStatus) {
+                });
             });
         });
     </script>
