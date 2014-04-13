@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
     <link href='http://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css'>
 
 </head>
@@ -13,14 +14,26 @@
     @if (User.Identity.Name != "")
     { 
         <div class="navbar navbar-inverse navbar-fixed-top">
-            <button id="sidr-btn" class="btn btn-danger btn-sm queue-button pull-left" style="margin-top: 15px; margin-left: 10px; margin-bottom: 15px; background-color: #272323; border-color: rgb(81, 199, 209); " type="button">
+            <button id="sidr-btn" class="btn btn-danger btn-sm queue-button pull-left" type="button">
                 <span class="glyphicon glyphicon-list"></span>
             </button>
             <div class="container">
-                
-                <div class="navbar-header" style="float:right;">
-                    @Html.ActionLink("urMusiQ", "Index", "Home", null, new { @class = "logo-navbar" })
+                <div class="row">
+                    <div class="col-lg-12">
+                            @Html.ActionLink("urMusiQ", "Index", "Home", null, new { @class = "logo-navbar pull-right" })
+                            <div>
+                                <div id="songText">
+                                    <div style="text-align: center;">
+                                        <strong>Trophies</strong>
+                                        <span>by</span>
+                                        <strong>Drake</strong>
+                                    </div>
+                                </div>
+                                <audio controls="controls" id="audio" preload="auto" tabindex="0" class="center"></audio>
+                            </div>
+                    </div>
                 </div>
+                
                 @*<div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
