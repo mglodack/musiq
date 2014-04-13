@@ -5,15 +5,10 @@
 }
 
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-    /**temp*/
-    /*width: 1899px;
-position: absolute;
-left: 100px;*/ 
-/****/
-    font-family: "HelveticaLight";
-	font-weight: 300;
+padding-top: 80px;
+padding-bottom: 20px;
+font-family: "HelveticaLight";
+font-weight: 300;
 }
 /**navigation**/
 .navbar-inverse {
@@ -132,6 +127,14 @@ color: white;
     color: rgb(81, 199, 209);
     text-decoration: none;
 }
+
+#sidr-btn {
+    margin-top: 23px; 
+    margin-left: 17px; 
+    margin-bottom: 0px; 
+    background-color: #272323; 
+    border-color: rgb(81, 199, 209);
+}
 /* Music Table */
 
 #table-length {
@@ -148,6 +151,11 @@ color: white;
 
 #table-song{
     width: 35%;
+}
+
+#table {
+margin-right: -15px;
+margin-left: -30px;
 }
 
 /* Responsive Media Queries */
@@ -271,3 +279,22 @@ a:hover{
 	background: url('../images/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
 }
 
+/* Layout */
+#audio {
+    width: 80%;
+    float: right;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.white {
+    color: white;
+}
+
+/* Music Player */
+#songText {
+    color: white;
+    font-size: 16px;
+    margin-top: 11px;
+    margin-bottom: -15px;
+}
