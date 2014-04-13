@@ -1,4 +1,55 @@
-﻿<div class="loader"></div>
+﻿<head>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+        <script>
+            var musiqApp = angular.module('musiqApp', ['ngRoute']);
+
+            musiqApp.controller('MainController', function ($http, $scope, $route, $routeParams, $location) {
+                $scope.songs = [];
+                $scope.queue = [];
+                $http.get('/api/music/150').success(function (data) {
+                    $scope.songs = data;
+                    $(".loader").fadeOut("slow");
+                    $.getScript("../scripts/music/audioplayback.js").done(function (script, textStatus) {
+                    });
+                });
+
+                $scope.addToQueue = function (song) {
+                    $scope.queue.push(song);
+                    console.log($scope.queue);
+                };
+
+                $scope.goToQueue = function () {
+                    console.log("Method Reached");
+                };
+            });
+
+        //.controller('QueueController', function ($scope, $routeParams) {
+        //    $scope.name = "BookController";
+        //    $scope.params = $routeParams;
+        //})
+
+        //.config(function($routeProvider, $locationProvider) {
+        //    $routeProvider
+        //     .when('/Queue/Index', {
+        //         templateUrl: '../Views/Shared/_QueuePartial.cshtml',
+        //         controller: 'QueueController',
+        //         resolve: {
+        //             // I will cause a 1 second delay
+        //             delay: function($q, $timeout) {
+        //                 var delay = $q.defer();
+        //                 $timeout(delay.resolve, 1000);
+        //                 return delay.promise;
+        //             }
+        //         }
+        //     });
+
+        //    $locationProvider.html5Mode(true);
+        //});
+    </script>
+</head>
+
+<div class="loader"></div>
 <div class="uploader">
     <a class="btn btn-upload-close btn-margin portrait-hide pull-right" id="upload_close">
         <span class="glyphicon glyphicon-remove"></span>

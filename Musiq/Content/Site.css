@@ -150,10 +150,16 @@ color: white;
 
 #table-artist{
     width: 20%;
+    min-width: 209px;
 }
 
 #table-song{
     width: 35%;
+}
+
+#table-genre {
+    width: 10%;
+    min-width: 100px;
 }
 
 #table {
