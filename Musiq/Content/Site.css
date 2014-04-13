@@ -78,6 +78,7 @@ input[type="checkbox"].input-validation-error {
     height: 100%;
     z-index: 0;
     width: 260px;
+    left: -260px;
     font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
     font-size: 15px;
     background: rgba(0,0,0,1);

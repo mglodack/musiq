@@ -31,7 +31,7 @@
                 </div>*@
             </div>
         </div>
-        <div id="sidr" class="sidr left" style="display: block; left: 0px;">
+        <div id="sidr" class="sidr left" style="display: block;">
             @*<div class="row">
                 <div class="col-sm-12">
                     <button class="btn btn-danger btn-sm queue-button pull-right" style="margin-top: 15px; margin-bottom:15px; margin-right:10px; background-color: #272323; border-color: #4FC8D3; " type="button">
@@ -39,16 +39,18 @@
                     </button>
                 </div>
             </div>*@
-           <div class="row">
-               <div class="col-sm-12 text-center" style="margin-top:61px;">
-                   <img class="img-circle" style="width:80px; height:80px;" src="~/Content/images/Koala.jpg" />
-                   <h4 class="site-font">Julio Garcia</h4>
+           <div class="row" style="margin-left:0; margin-right:0;">
+               <div class="col-sm-4" style="margin-top:61px;">
+                   <img class="img-circle" style="width:45px; height:45px; margin-left:15px" src="~/Content/images/Koala.jpg" />
+               </div>
+               <div class="col-sm-6" style="margin-top:61px;">
+                   <h4 style="margin-top: 15px;">Julio Garcia</h4>
                </div>
            </div>
-          <ul class="text-center">
-            <li class=""><a class="sidr-links" id="urProfile" href="#">urProfile</a></li>
-            <li><a class="sidr-links" id="urQueue" href="#">urQueue</a></li>
-            <li><a class="sidr-links" href="#">Logout</a></li>
+          <ul class="text-center" style="margin-top:10px;">
+            <li class=""><a class="sidr-links" id="urProfile" href="#"><span class="glyphicon glyphicon-user" style="color: rgb(81, 199, 209); margin-right: 10px;"></span>Profile</a></li>
+            <li><span class="glyphicon glyphicon-headphones" style="color: rgb(81, 199, 209); margin-right: 10px;"></span><a class="sidr-links" id="urQueue" href="#">Queue</a></li>
+            <li><a class="sidr-links" href="#"><span class="glyphicon glyphicon-log-out" style="color: rgb(81, 199, 209); margin-right: 10px;"></span>Logout</a></li>
           </ul>
         </div>
     }
@@ -64,8 +66,10 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script>
-        var toggle = true;
-        $(document).ready(function () {        
+        var toggle = false;
+        var scrnwidth;
+        $(document).ready(function () { 
+            scrnwidth = $(this).width;
             $('#sidr-btn').click(function (e) {
                 $(this).attr("disabled", "disabled");
                 if (toggle) {
@@ -74,35 +78,43 @@
                     console.log(toggle);
                     $('#sidr').animate({
                         left: "-=260"
-                    }, 500), $('body').attr("position", "absolute");
+                    }, 500);
+                    $('body').css('position', 'absolute');
+                    $('body').animate({
+                        left: "-=280"
+                    }, 500);
                 } else
                 {
                     toggle = true;
                     console.log(toggle);
                     $('#sidr').animate({
                         left: "+=260"
-                    }, 500), $('body').attr("position", "fixed");
+                    }, 500);
+                    $('body').css('position', 'fixed');
+                    $('body').animate({
+                        left: "+=280"
+                    }, 500);
                 }
                 setTimeout('$("#sidr-btn").removeAttr("disabled")',500);
             });
-            $(function () {
-                var prev;
-                $('#urProfile').hover(function () {
-                    prev = $(this).text();
-                    $(this).text("urProfile");
-                }, function () {
-                    $(this).text(prev)
-                });
-            });
-            $(function () {
-                var prev;
-                $('#urQueue').hover(function () {
-                    prev = $(this).text();
-                    $(this).text("urQueue");
-                }, function () {
-                    $(this).text(prev)
-                });
-            });
+            //$(function () {
+            //    var prev;
+            //    $('#urProfile').hover(function () {
+            //        prev = $(this).text();
+            //        $(this).text("urProfile");
+            //    }, function () {
+            //        $(this).text(prev)
+            //    });
+            //});
+            //$(function () {
+            //    var prev;
+            //    $('#urQueue').hover(function () {
+            //        prev = $(this).text();
+            //        $(this).text("urQueue");
+            //    }, function () {
+            //        $(this).text(prev)
+            //    });
+            //});
         });
     </script>
 </body>
