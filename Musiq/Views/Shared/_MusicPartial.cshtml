@@ -6,9 +6,9 @@
 
         musiqApp.controller('musiqCtrl', function ($http, $scope) {
             $scope.songs = [];
-            $http.get('/api/music/50').success(function (data) {
-                console.log(data);
+            $http.get('/api/music/150').success(function (data) {
                 $scope.songs = data;
+                $(".loader").fadeOut("slow");
             });
         });
     </script>
@@ -28,15 +28,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="song in songs | filter:search" data-songid="{{song.SongID}}" data-songlink="http://www.ucsbjukebox.info/Music/{{song.FilePath}}" data-song="{{song.SongTitle}}" data-artist="{{song.Artist}}" data-album="{{song.Album}}">
+            <tr ng-repeat="song in songs" ng-show="([song] | filter:search).length > 0" data-songid="{{song.SongID}}" data-songlink="http://www.ucsbjukebox.info/Music/{{song.FilePath}}" data-song="{{song.SongTitle}}" data-artist="{{song.Artist}}" data-album="{{song.Album}}">
                 <td class="mobile-hide">
                     <button class="btn btn-primary btn-sm queue-button pull-left" type="button">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
                 </td>
                 @*<td class="portrait-only">
-                    <img src="~/img/defaultartwork.png" class="album-artwork" />
-                </td>*@
+                <img src="~/img/defaultartwork.png" class="album-artwork" />
+            </td>*@
                 <td>
                     <div class="text-wrap portrait-bold"><span class="song-span">{{song.SongTitle}}</span><input class="song-input" hidden /></div>
                     <div class="text-wrap portrait-only"><span>{{song.Artist}}</span></div>
