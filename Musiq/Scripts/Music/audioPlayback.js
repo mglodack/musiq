@@ -4,7 +4,7 @@
     var tracks;
     var current;
     var currentSong = $('#current-song');
-    var by = $('#player-by');
+    var by = $('#by_span');
     var currentArtist = $('#current-artist');
     var startIndex;
     var len;
@@ -174,10 +174,11 @@
         selectedRow.addClass('active-link').siblings().removeClass('active-link');
         audio[0].load();
         audio[0].play();
-        var songId = selectedRow.attr('data-songid');
-        var song = selectedRow.attr('data-song');
+        var songId = selectedRow.data('songid');
+        var song = selectedRow.data('song');
         $(currentSong).attr('data-songid', songId);
-        var artist = selectedRow.attr('data-artist');
+        var artist = selectedRow.data('artist');
+        console.log(selectedRow);
 
         if (!isElementVisible(selectedRow)) {
             $('html body').animate({
