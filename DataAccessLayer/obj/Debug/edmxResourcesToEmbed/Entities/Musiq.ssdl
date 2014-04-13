@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="jukeboxModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AccountAccount">
+    <Key>
+      <PropertyRef Name="Following_LoginId" />
+      <PropertyRef Name="Followers_LoginId" />
+    </Key>
+    <Property Name="Following_LoginId" Type="int" Nullable="false" />
+    <Property Name="Followers_LoginId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AccountAlbum">
+    <Key>
+      <PropertyRef Name="AccountId" />
+      <PropertyRef Name="AlbumId" />
+    </Key>
+    <Property Name="AccountId" Type="int" Nullable="false" />
+    <Property Name="AlbumId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AccountPlaylist">
+    <Key>
+      <PropertyRef Name="Accounts_LoginId" />
+      <PropertyRef Name="Playlists_Id" />
+    </Key>
+    <Property Name="Accounts_LoginId" Type="int" Nullable="false" />
+    <Property Name="Playlists_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Accounts">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="LoginId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RoomId" Type="int" />
+    <Property Name="Room_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="AccountSong">
+    <Key>
+      <PropertyRef Name="Accounts_LoginId" />
+      <PropertyRef Name="Songs_Id" />
+    </Key>
+    <Property Name="Accounts_LoginId" Type="int" Nullable="false" />
+    <Property Name="Songs_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AlbumImage">
+    <Key>
+      <PropertyRef Name="AlbumId" />
+      <PropertyRef Name="ImageId" />
+    </Key>
+    <Property Name="AlbumId" Type="int" Nullable="false" />
+    <Property Name="ImageId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Images">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ImageDirectory" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImageDescription" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OnSnapAlbums">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="AlbumName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OnSnapImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ImageDirectory" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImageDescription" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Playlists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rooms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoomName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RoomPassword" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Privacy" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SongPlaylist">
+    <Key>
+      <PropertyRef Name="Playlists_Id" />
+      <PropertyRef Name="Songs_Id" />
+    </Key>
+    <Property Name="Playlists_Id" Type="int" Nullable="false" />
+    <Property Name="Songs_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SongPlays">
+    <Key>
+      <PropertyRef Name="AccountId" />
+      <PropertyRef Name="SongId" />
+    </Key>
+    <Property Name="AccountId" Type="int" Nullable="false" />
+    <Property Name="SongId" Type="int" Nullable="false" />
+    <Property Name="NumberOfPlays" Type="int" Nullable="false" />
+    <Property Name="DatePlayed" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Songs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Length" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FilePath" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Artist" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Genre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Album" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Likes" Type="int" Nullable="false" />
+    <Property Name="isAdded" Type="bit" Nullable="false" />
+    <Property Name="Room_Id" Type="int" />
+    <Property Name="NumberOfPlays" Type="int" Nullable="false" />
+    <Property Name="ArtworkURL" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_AccountAccount_Account">
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+    <End Role="AccountAccount" Type="Self.AccountAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="LoginId" />
+      </Principal>
+      <Dependent Role="AccountAccount">
+        <PropertyRef Name="Following_LoginId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountAccount_Account1">
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+    <End Role="AccountAccount" Type="Self.AccountAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="LoginId" />
+      </Principal>
+      <Dependent Role="AccountAccount">
+        <PropertyRef Name="Followers_LoginId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountAlbum_Accounts">
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+    <End Role="AccountAlbum" Type="Self.AccountAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="LoginId" />
+      </Principal>
+      <Dependent Role="AccountAlbum">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountAlbum_OnSnapAlbums">
+    <End Role="OnSnapAlbums" Type="Self.OnSnapAlbums" Multiplicity="1" />
+    <End Role="AccountAlbum" Type="Self.AccountAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OnSnapAlbums">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AccountAlbum">
+        <PropertyRef Name="AlbumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountPlaylist_Account">
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+    <End Role="AccountPlaylist" Type="Self.AccountPlaylist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="LoginId" />
+      </Principal>
+      <Dependent Role="AccountPlaylist">
+        <PropertyRef Name="Accounts_LoginId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountPlaylist_Playlist">
+    <End Role="Playlists" Type="Self.Playlists" Multiplicity="1" />
+    <End Role="AccountPlaylist" Type="Self.AccountPlaylist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Playlists">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AccountPlaylist">
+        <PropertyRef Name="Playlists_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountRoom">
+    <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rooms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Accounts">
+        <PropertyRef Name="Room_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountSong_Account">
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+    <End Role="AccountSong" Type="Self.AccountSong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="LoginId" />
+      </Principal>
+      <Dependent Role="AccountSong">
+        <PropertyRef Name="Accounts_LoginId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountSong_Song">
+    <End Role="Songs" Type="Self.Songs" Multiplicity="1" />
+    <End Role="AccountSong" Type="Self.AccountSong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Songs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AccountSong">
+        <PropertyRef Name="Songs_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AlbumImage_OnSnapAlbums">
+    <End Role="OnSnapAlbums" Type="Self.OnSnapAlbums" Multiplicity="1" />
+    <End Role="AlbumImage" Type="Self.AlbumImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OnSnapAlbums">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AlbumImage">
+        <PropertyRef Name="AlbumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AlbumImage_OnSnapImages">
+    <End Role="OnSnapImages" Type="Self.OnSnapImages" Multiplicity="1" />
+    <End Role="AlbumImage" Type="Self.AlbumImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OnSnapImages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AlbumImage">
+        <PropertyRef Name="ImageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoomAccount">
+    <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rooms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Accounts">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoomSong">
+    <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
+    <End Role="Songs" Type="Self.Songs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rooms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Songs">
+        <PropertyRef Name="Room_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SongPlaylist_Playlist">
+    <End Role="Playlists" Type="Self.Playlists" Multiplicity="1" />
+    <End Role="SongPlaylist" Type="Self.SongPlaylist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Playlists">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SongPlaylist">
+        <PropertyRef Name="Playlists_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SongPlaylist_Song">
+    <End Role="Songs" Type="Self.Songs" Multiplicity="1" />
+    <End Role="SongPlaylist" Type="Self.SongPlaylist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Songs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SongPlaylist">
+        <PropertyRef Name="Songs_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SongPlays_Accounts">
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+    <End Role="SongPlays" Type="Self.SongPlays" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="LoginId" />
+      </Principal>
+      <Dependent Role="SongPlays">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SongPlays_Songs">
+    <End Role="Songs" Type="Self.Songs" Multiplicity="1" />
+    <End Role="SongPlays" Type="Self.SongPlays" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Songs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SongPlays">
+        <PropertyRef Name="SongId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="jukeboxModelStoreContainer">
+    <EntitySet Name="AccountAccount" EntityType="Self.AccountAccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AccountAlbum" EntityType="Self.AccountAlbum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AccountPlaylist" EntityType="Self.AccountPlaylist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AccountSong" EntityType="Self.AccountSong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AlbumImage" EntityType="Self.AlbumImage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OnSnapAlbums" EntityType="Self.OnSnapAlbums" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OnSnapImages" EntityType="Self.OnSnapImages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Playlists" EntityType="Self.Playlists" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SongPlaylist" EntityType="Self.SongPlaylist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SongPlays" EntityType="Self.SongPlays" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Songs" EntityType="Self.Songs" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AccountAccount_Account" Association="Self.FK_AccountAccount_Account">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="AccountAccount" EntitySet="AccountAccount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountAccount_Account1" Association="Self.FK_AccountAccount_Account1">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="AccountAccount" EntitySet="AccountAccount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountAlbum_Accounts" Association="Self.FK_AccountAlbum_Accounts">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="AccountAlbum" EntitySet="AccountAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountAlbum_OnSnapAlbums" Association="Self.FK_AccountAlbum_OnSnapAlbums">
+      <End Role="OnSnapAlbums" EntitySet="OnSnapAlbums" />
+      <End Role="AccountAlbum" EntitySet="AccountAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountPlaylist_Account" Association="Self.FK_AccountPlaylist_Account">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="AccountPlaylist" EntitySet="AccountPlaylist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountPlaylist_Playlist" Association="Self.FK_AccountPlaylist_Playlist">
+      <End Role="Playlists" EntitySet="Playlists" />
+      <End Role="AccountPlaylist" EntitySet="AccountPlaylist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountRoom" Association="Self.FK_AccountRoom">
+      <End Role="Rooms" EntitySet="Rooms" />
+      <End Role="Accounts" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountSong_Account" Association="Self.FK_AccountSong_Account">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="AccountSong" EntitySet="AccountSong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountSong_Song" Association="Self.FK_AccountSong_Song">
+      <End Role="Songs" EntitySet="Songs" />
+      <End Role="AccountSong" EntitySet="AccountSong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AlbumImage_OnSnapAlbums" Association="Self.FK_AlbumImage_OnSnapAlbums">
+      <End Role="OnSnapAlbums" EntitySet="OnSnapAlbums" />
+      <End Role="AlbumImage" EntitySet="AlbumImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AlbumImage_OnSnapImages" Association="Self.FK_AlbumImage_OnSnapImages">
+      <End Role="OnSnapImages" EntitySet="OnSnapImages" />
+      <End Role="AlbumImage" EntitySet="AlbumImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoomAccount" Association="Self.FK_RoomAccount">
+      <End Role="Rooms" EntitySet="Rooms" />
+      <End Role="Accounts" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoomSong" Association="Self.FK_RoomSong">
+      <End Role="Rooms" EntitySet="Rooms" />
+      <End Role="Songs" EntitySet="Songs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SongPlaylist_Playlist" Association="Self.FK_SongPlaylist_Playlist">
+      <End Role="Playlists" EntitySet="Playlists" />
+      <End Role="SongPlaylist" EntitySet="SongPlaylist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SongPlaylist_Song" Association="Self.FK_SongPlaylist_Song">
+      <End Role="Songs" EntitySet="Songs" />
+      <End Role="SongPlaylist" EntitySet="SongPlaylist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SongPlays_Accounts" Association="Self.FK_SongPlays_Accounts">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="SongPlays" EntitySet="SongPlays" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SongPlays_Songs" Association="Self.FK_SongPlays_Songs">
+      <End Role="Songs" EntitySet="Songs" />
+      <End Role="SongPlays" EntitySet="SongPlays" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

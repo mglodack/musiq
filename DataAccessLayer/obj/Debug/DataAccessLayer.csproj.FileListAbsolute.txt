@@ -8,3 +8,13 @@ C:\Users\Julio Garcia\Desktop\Github\OnSnap\DataAccessLayer\bin\Debug\EntityFram
 C:\Users\Julio Garcia\Desktop\Github\OnSnap\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
 C:\Users\Julio Garcia\Desktop\Github\OnSnap\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\Users\Julio Garcia\Desktop\Github\OnSnap\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\bin\Debug\EntityFramework.dll
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\bin\Debug\EntityFramework.xml
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
