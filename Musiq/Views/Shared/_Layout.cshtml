@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title urMusiQ</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -33,30 +33,14 @@
                             </div>
                     </div>
                 </div>
-                
-                @*<div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>*@
             </div>
         </div>
         <div id="sidr" class="sidr left" style="display: block;">
-            @*<div class="row">
-                <div class="col-sm-12">
-                    <button class="btn btn-danger btn-sm queue-button pull-right" style="margin-top: 15px; margin-bottom:15px; margin-right:10px; background-color: #272323; border-color: #4FC8D3; " type="button">
-                        <span class="glyphicon glyphicon-list"></span>
-                    </button>
-                </div>
-            </div>*@
            <div class="row" style="margin-left:0; margin-right:0;">
-               <div class="col-sm-4" style="margin-top:61px;">
+               <div class="col-sm-4" style="margin-top:100px;">
                    <img class="img-circle" style="width:45px; height:45px; margin-left:15px" src="~/Content/images/Koala.jpg" />
                </div>
-               <div class="col-sm-6" style="margin-top:61px;">
+               <div class="col-sm-6" style="margin-top:100px;">
                    <h4 style="margin-top: 15px;">Julio Garcia</h4>
                </div>
            </div>
@@ -92,7 +76,7 @@
                     $('#sidr').animate({
                         left: "-=260"
                     }, 500);
-                    $('body').css('position', 'absolute');
+                    //$('body').css('position', 'absolute');
                     $('body').animate({
                         left: "-=280"
                     }, 500);
@@ -103,7 +87,7 @@
                     $('#sidr').animate({
                         left: "+=260"
                     }, 500);
-                    $('body').css('position', 'fixed');
+                    //$('body').css('position', 'fixed');
                     $('body').animate({
                         left: "+=280"
                     }, 500);

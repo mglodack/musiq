@@ -1,16 +1,24 @@
 ﻿<div class="loader"></div>
+<div class="uploader">
+    <a class="btn btn-upload-close btn-margin portrait-hide pull-right" id="upload_close">
+        <span class="glyphicon glyphicon-remove"></span>
+    </a>
+    <div class="uploader-background text-center">
+        <p class="uploader-text">Drop your Music<span style="margin-left:10px;" class="glyphicon glyphicon-music"></span></p>
+    </div>
+</div>
 <div class="musiq-container">
     <div class="row">
         <div class="col col-lg-8">
-            <input class="form-control pull-left" ng-model="search" style="width:100%">
+            <input class="form-control pull-left" placeholder="Sera" ng-model="search" style="width:100%">
         </div>
         <div class="col col-lg-4">
             <div class="pull-right">
-                <a class="btn btn-primary btn-margin mobile-hide" data-toggle="modal" href="#uploadMusicModal" id="uploadButton">
+                <a class="btn btn-musiq btn-margin mobile-hide" @*data-toggle="modal" href="#uploadMusicModal"*@ id="uploadButton">
                     <span class="glyphicon glyphicon-music"></span>
                     Upload Music
                 </a>
-                <a class="btn btn-primary btn-margin portrait-hide" data-toggle="modal" href="#createPlaylistModal">
+                <a class="btn btn-musiq btn-margin portrait-hide" data-toggle="modal" href="#createPlaylistModal">
                     <span class="glyphicon glyphicon-plus"></span>
                     Create Playlist
                 </a>
@@ -21,13 +29,27 @@
         @Html.Partial("_MusicPartial")
     </div>
 </div>
-
+@*<div class="md-overlay">
+    <h1 class="upload-drop">Drop Music<span class="glyphicon glyphicon-music"></span></h1>
+</div>*@
 @Html.Partial("_ProfileModals")
 
 @section Scripts {
 <script type="text/javascript" src="~/Scripts/Upload/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="~/Scripts/Upload/jquery.iframe-transport.js"></script>
 <script type="text/javascript" src="~/Scripts/Upload/jquery.fileupload.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#uploadButton").click(function (event) {
+                event.preventDefault();
+                $('.uploader').fadeIn('slow');
+            });
+            $("#upload_close").click(function (event) {
+                event.preventDefault();
+                $('.uploader').fadeOut('slow');
+            });
+        });
+    </script>
 <script>
     //Upload
     $(function () {
@@ -124,7 +146,7 @@
         $(document).click(function () {
             $contextMenu.hide();
         });
-
+        
     });
 </script>
 
