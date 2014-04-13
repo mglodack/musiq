@@ -1,7 +1,10 @@
 ﻿<div class="loader"></div>
 <div class="uploader">
+    <a class="btn btn-upload-close btn-margin portrait-hide pull-right" id="upload_close">
+        <span class="glyphicon glyphicon-remove"></span>
+    </a>
     <div class="uploader-background text-center">
-        <p>Drop your Music<span class="glyphicon glyphicon-music"></span></p>
+        <p class="uploader-text">Drop your Music<span style="margin-left:10px;" class="glyphicon glyphicon-music"></span></p>
     </div>
 </div>
 <div class="musiq-container">
@@ -40,6 +43,10 @@
             $("#uploadButton").click(function (event) {
                 event.preventDefault();
                 $('.uploader').fadeIn('slow');
+            });
+            $("#upload_close").click(function (event) {
+                event.preventDefault();
+                $('.uploader').fadeOut('slow');
             });
         });
     </script>
