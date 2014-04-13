@@ -51,6 +51,28 @@ input[type="checkbox"].input-validation-error {
     margin-right: 2px;
 }
 
+#music-container {
+    margin-top: 10px;
+}
+
+/* Music Table */
+
+#table-length {
+    width: 10%;
+}
+
+#table-album{
+    width: 22%;
+}
+
+#table-artist{
+    width: 20%;
+}
+
+#table-song{
+    width: 35%;
+}
+
 /* Responsive Media Queries */
 .portrait-only {
     display: none;
