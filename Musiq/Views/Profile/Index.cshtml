@@ -1,51 +1,56 @@
 ﻿<head>
     <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/angular-route.min.js"></script>
-        <script>
-            var musiqApp = angular.module('musiqApp', ['ngRoute']);
+    <script src="~/Scripts/angular-local-storage.js"></script>
+    <script>
+        var musiqApp = angular.module('musiqApp', ['LocalStorageModule']);
 
-            musiqApp.controller('MainController', function ($http, $scope, $route, $routeParams, $location) {
-                $scope.songs = [];
-                $scope.queue = [];
-                $http.get('/api/music/150').success(function (data) {
-                    $scope.songs = data;
-                    $(".loader").fadeOut("slow");
-                    $.getScript("../scripts/music/audioplayback.js").done(function (script, textStatus) {
-                    });
+        //musiqApp.factory('userService', function() {
+
+        //    var service = {
+        //        queue: []
+        //    };
+
+        //    service.addToQueue = function (song) {
+        //        service.queue.push(song);
+        //    };
+        //    return service;
+        //});
+
+        musiqApp.controller('MusiqController', ['$http', '$scope', 'localStorageService',
+            function($http, $scope, localStorageService) {
+            $scope.songs = [];
+            $scope.queue = [];
+            $http.get('/api/music/150').success(function (data) {
+                $scope.songs = data;
+                $(".loader").fadeOut("slow");
+                $.getScript("../scripts/music/audioplayback.js").done(function (script, textStatus) {
                 });
-
-                $scope.addToQueue = function (song) {
-                    $scope.queue.push(song);
-                    console.log($scope.queue);
-                };
-
-                $scope.goToQueue = function () {
-                    console.log("Method Reached");
-                };
             });
 
-        //.controller('QueueController', function ($scope, $routeParams) {
-        //    $scope.name = "BookController";
-        //    $scope.params = $routeParams;
-        //})
+            $scope.addToQueue = function (song) {
+                $scope.queue.push(song);
+                localStorageService.add('queue', $scope.queue);
+                var queue = localStorageService.get('queue');
+                console.log(queue);
+            };
 
-        //.config(function($routeProvider, $locationProvider) {
-        //    $routeProvider
-        //     .when('/Queue/Index', {
-        //         templateUrl: '../Views/Shared/_QueuePartial.cshtml',
-        //         controller: 'QueueController',
-        //         resolve: {
-        //             // I will cause a 1 second delay
-        //             delay: function($q, $timeout) {
-        //                 var delay = $q.defer();
-        //                 $timeout(delay.resolve, 1000);
-        //                 return delay.promise;
-        //             }
-        //         }
-        //     });
+        }]);
 
-        //    $locationProvider.html5Mode(true);
-        //});
+        musiqApp.controller('QueueController', ['$http', '$scope', 'localStorageService',
+        function ($http, $scope, localStorageService) {
+            $scope.songs = [];
+            $scope.queue = localStorageService.get('queue');
+
+            $scope.addToQueue = function (song) {
+                $scope.queue.push(song);
+                localStorageService.add('queue', $scope.queue);
+                var queue = localStorageService.get('queue');
+                console.log(queue);
+            };
+
+        }]);
+
+
     </script>
 </head>
 
@@ -76,13 +81,10 @@
             </div>
         </div>
     </div>
-    <div class="row" id="table">
-        @Html.Partial("_MusicPartial")
+        <div class="row" id="table">
+            @Html.Partial("_MusicPartial")
+        </div>
     </div>
-</div>
-@*<div class="md-overlay">
-    <h1 class="upload-drop">Drop Music<span class="glyphicon glyphicon-music"></span></h1>
-</div>*@
 @Html.Partial("_ProfileModals")
 
 @section Scripts {

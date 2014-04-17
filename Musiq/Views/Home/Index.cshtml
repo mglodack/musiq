@@ -1,5 +1,4 @@
-﻿@model Musiq.Models.LoginViewModel
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 <body id="login_page">
@@ -13,11 +12,11 @@
     <div class="row text-center">
         <div class="col-centered margintop">
             <form class="form-horizontal">
-                <fieldset class="fieldset-login" id="login">
+                <fieldset class="fieldset-login login">
                     <input class="form-control-login site-font login-width" id="username" type="text" placeholder="Username" autofocus required>
-                    
+
                 </fieldset>
-                <fieldset class="fieldset-login" id="login">
+                <fieldset class="fieldset-login login">
                     <input class="form-control-login site-font login-width" id="password" type="password" placeholder="Password" required>
                 </fieldset>
                 <fieldset id="login2" style="visibility:hidden; height:0px;">
@@ -33,11 +32,11 @@
         </div>
     </div>
     <script>
-        var clicked = false;
+        var logIn = true;
         $(document).ready(function () {
             $('#register_link').click(function () {
-                if (!clicked) {
-                    clicked = true;
+                if (!logIn) {
+                    logIn = true;
                     $('#login2').css('visibility', 'visible');
                     $('#login2').animate({
                         height: "74px"
@@ -49,7 +48,7 @@
                     
                 }
                 else {
-                    clicked = false;
+                    logIn = false;
                     $('#login2').css('visibility', 'hidden');
                     $('#login2').animate({
                         height: "0px"
@@ -58,6 +57,28 @@
                     $("#registered span").text("Don't have an Account?")
                     $('#registered a').text('Register');
                     
+                }
+            });
+
+            $('.login-btn').click(function (e) {
+                var username = $('#username').val();
+                var password = $('#password').val();
+                var confirmPassword = $('#confirmPassword').val();
+                if (logIn) {
+                    $.ajax({
+                        url: "/Account/Login",
+                        data: { username: username, password: password},
+                        success: function (data) {
+                        }
+                    });
+                }
+                else {
+                    $.ajax({
+                        url: "/Account/Register",
+                        data: { username: username, password: password },
+                        success: function (data) {
+                        }
+                    });
                 }
             });
 

@@ -11,7 +11,6 @@
 
 </head>
 <body>
-    <div ng-controller="MainController" id="music-container">
         @if (User.Identity.Name != "")
         {
             <div class="navbar navbar-inverse navbar-fixed-top">
@@ -47,7 +46,7 @@
                 </div>
                 <ul class="text-center" style="margin-top:10px;">
                     <li class=""><a class="sidr-links" id="urProfile" href="#"><span class="glyphicon glyphicon-user" style="color: rgb(81, 199, 209); margin-right: 10px;"></span>Profile</a></li>
-                    <li><span class="glyphicon glyphicon-headphones" style="color: rgb(81, 199, 209); margin-right: 10px;"></span><a class="sidr-links" id="urQueue" href="/Remote/Index">Queue</a></li>
+                    <li><span class="glyphicon glyphicon-headphones" style="color: rgb(81, 199, 209); margin-right: 10px;"></span><a class="sidr-links" id="urQueue" href="#">Queue</a></li>
                     <li><a class="sidr-links" href="#"><span class="glyphicon glyphicon-log-out" style="color: rgb(81, 199, 209); margin-right: 10px;"></span>Logout</a></li>
                 </ul>
             </div>
@@ -58,7 +57,6 @@
                 <footer>
                     <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
                 </footer>*@
-        </div>
         </div>
 
         @Scripts.Render("~/bundles/jquery")
@@ -114,15 +112,14 @@
                 //    });
                 //});
 
-                //$('#urQueue').click(function (e) {
-                //    $.ajax({
-                //        url: "/Queue/Index",
-                //        success: function (data) {
-                //            $('#table').html(data);
-
-                //        }
-                //    });
-                //});
+                $('#urQueue').click(function (e) {
+                    $.ajax({
+                        url: "/Queue/Index",
+                        success: function (data) {
+                            $('#table').html(data);
+                        }
+                    });
+                });
             });
         </script>
 </body>
