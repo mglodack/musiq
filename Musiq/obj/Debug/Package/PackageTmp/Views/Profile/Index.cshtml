@@ -1,0 +1,153 @@
+﻿<div class="loader"></div>
+<div class="uploader">
+    <a class="btn btn-upload-close btn-margin portrait-hide pull-right" id="upload_close">
+        <span class="glyphicon glyphicon-remove"></span>
+    </a>
+    <div class="uploader-background text-center">
+        <p class="uploader-text">Drop your Music<span style="margin-left:10px;" class="glyphicon glyphicon-music"></span></p>
+    </div>
+</div>
+<div class="musiq-container">
+    <div class="row">
+        <div class="col col-lg-8">
+            <input class="form-control pull-left" placeholder="Search" ng-model="search" style="width:100%">
+        </div>
+        <div class="col col-lg-4">
+            <div class="pull-right">
+                <a class="btn btn-musiq btn-margin mobile-hide" @*data-toggle="modal" href="#uploadMusicModal"*@ id="uploadButton">
+                    <span class="glyphicon glyphicon-music"></span>
+                    Upload Music
+                </a>
+                <a class="btn btn-musiq btn-margin portrait-hide" data-toggle="modal" href="#createPlaylistModal">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Create Playlist
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="table">
+        @Html.Partial("_MusicPartial")
+    </div>
+</div>
+@*<div class="md-overlay">
+    <h1 class="upload-drop">Drop Music<span class="glyphicon glyphicon-music"></span></h1>
+</div>*@
+@Html.Partial("_ProfileModals")
+
+@section Scripts {
+<script type="text/javascript" src="~/Scripts/Upload/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="~/Scripts/Upload/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="~/Scripts/Upload/jquery.fileupload.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#uploadButton").click(function (event) {
+                event.preventDefault();
+                $('.uploader').fadeIn('slow');
+            });
+            $("#upload_close").click(function (event) {
+                event.preventDefault();
+                $('.uploader').fadeOut('slow');
+            });
+        });
+    </script>
+<script>
+    //Upload
+    $(function () {
+        $('#fileupload').fileupload({
+            dataType: 'json',
+            //add: function (e, data) {
+            //    data.context = $('<p/>').text('Uploading...').appendTo($('#uploaded-songs'));
+            //    data.submit();
+            //},
+            done: function (e, data) {
+                var fragment = document.createDocumentFragment();
+
+                $.each(data.result, function (index, file) {
+                    var song = file.SongTitle;
+                    var artist = file.Artist;
+                    var album = file.Album;
+                    var length = file.Length;
+
+                    console.log(song);
+
+                    $("#uploaded-songs-table > tbody:last").append('<tr><td>' + song + '</td><td>' + artist + '</td><td>' + album + '</td><td>' + length + '</td>');
+
+                });
+            },
+            progressall: function (e, data) {
+                $('#uploaded-songs-table').fadeIn('medium');
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#progress .progress-bar').css(
+                    'width',
+                    progress + '%'
+                );
+
+            },
+            fail: function (e, data) {
+                // data.errorThrown
+                // data.textStatus;
+                // data.jqXHR;
+                console.log(data.errorThrown);
+            }
+
+        });
+    });
+
+    //Right-Click Dropdown
+    $(function () {
+
+        var $contextMenu = $("#contextMenu");
+        var $rowClicked;
+
+        $("body").on("contextmenu", "table tr", function (e) {
+            $rowClicked = $(this)
+            if ($rowClicked.hasClass("active-link") == false) {
+                $rowClicked.addClass('active-link').siblings().removeClass('active-link');
+            }
+            $contextMenu.css({
+                display: "block",
+                left: e.pageX,
+                top: e.pageY
+            });
+            return false;
+        });
+
+        $contextMenu.on("click", "a", function () {
+            var playlistId = parseInt($(this).attr('data-playlistid'));
+            var links = document.getElementsByClassName("active-link");
+            var songIds = [].map.call(links, function (el) {
+                return parseInt(el.getAttribute("data-songid"));
+            });
+            console.log($(this).html())
+            if ($(this).html() == "Get Artwork") {
+                $.ajax({
+                    url: "/Music/UpdateArtwork",
+                    traditional: true,
+                    data: { SongIds: songIds },
+                    success: function (data) {
+                        console.log("success");
+                    }
+                });
+            }
+            else {
+                $.ajax({
+                    url: "/Playlist/AddSongs",
+                    traditional: true,
+                    data: { PlaylistId: playlistId, SongIds: songIds },
+                    success: function (data) {
+                    }
+                });
+            }
+
+
+            $contextMenu.hide();
+        });
+
+        $(document).click(function () {
+            $contextMenu.hide();
+        });
+        
+    });
+</script>
+
+}
