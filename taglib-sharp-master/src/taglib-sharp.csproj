@@ -278,7 +278,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\Jukebox\Jukebox\bin\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\Musiq\bin\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />

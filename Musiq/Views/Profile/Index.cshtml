@@ -9,6 +9,13 @@
 </div>
 <div class="musiq-container">
     <div class="row">
+        <div class="col-lg-12 col-md-12 col-md-12">
+            <div class="progress progress-striped active" id="progress">
+                <div class="progress-bar" id="uploadStatus" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-lg-8 pull-left" style="padding:0px;">
             <input class="form-control" placeholder="Search" ng-model="search" style="width:100%">
         </div>
@@ -72,39 +79,6 @@
 );
     </script>
 <script>
-    //$('drag-target-selector').on('drop', function (event) {  
-    //});
-    //$.fn.draghover = function (options) {
-    //    return this.each(function () {
-
-    //        var collection = $(),
-    //            self = $(this);
-
-    //        self.on('dragenter', function (e) {
-    //            if (collection.length === 0) {
-    //                self.trigger('draghoverstart');
-    //            }
-    //            collection = collection.add(e.target);
-    //        });
-
-    //        self.on('dragleave drop', function (e) {
-    //            collection = collection.not(e.target);
-    //            if (collection.length === 0) {
-    //                self.trigger('draghoverend');
-    //            }
-    //        });
-    //    });
-    //};
-    //$(window).draghover().on({
-    //    'draghoverstart': function () {
-    //        $('.uploader').fadeOut('slow');
-    //    },
-    //    'draghoverend': function () {
-    //        $('.uploader').fadeOut('slow');
-    //    }
-
-    //});
-    Upload
     $(function () {
         $('#fileupload').fileupload({
             dataType: 'json',
@@ -127,13 +101,15 @@
                 });
             },
             progressall: function (e, data) {
-                $('#uploaded-songs-table').fadeIn('medium');
+                $('.progress-bar').animate({
+                    height: "20px"
+                }, 200);
+                //$('#progress-bar-table').fadeIn('medium');
                 var progress = parseInt(data.loaded / data.total * 100, 10);
                 $('#progress .progress-bar').css(
                     'width',
                     progress + '%'
                 );
-
             },
             fail: function (e, data) {
                 // data.errorThrown
@@ -144,7 +120,6 @@
 
         });
     });
-
     //Right-Click Dropdown
     $(function () {
 
