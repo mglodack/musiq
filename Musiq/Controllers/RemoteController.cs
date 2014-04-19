@@ -10,9 +10,9 @@ namespace Musiq.Controllers
     {
         //
         // GET: /Remote/
-        public ActionResult Index()
+        public PartialViewResult Index()
         {
-            return View();
+            return PartialView("_RemotePartial");
         }
 	}
 }

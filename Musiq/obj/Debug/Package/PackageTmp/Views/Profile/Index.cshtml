@@ -1,0 +1,298 @@
+﻿<head>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-local-storage.js"></script>
+    <script>
+        var musiqApp = angular.module('musiqApp', ['LocalStorageModule']);
+
+        musiqApp.directive('compile', function ($compile) {
+            // directive factory creates a link function
+            return function (scope, element, attrs) {
+                scope.$watch(
+                    function (scope) {
+                        // watch the 'compile' expression for changes
+                        return scope.$eval(attrs.compile);
+                    },
+                    function (value) {
+                        // when the 'compile' expression changes
+                        // assign it into the current DOM
+                        element.html(value);
+
+                        // compile the new DOM and link it to the current
+                        // scope.
+                        // NOTE: we only compile .childNodes so that
+                        // we don't get into infinite loop compiling ourselves
+                        $compile(element.contents())(scope);
+                        $('#content_loader').fadeOut('slow');
+                    }
+                );
+            };
+        });
+
+        musiqApp.controller('MusiqController', ['$http', '$scope', '$sce', '$timeout', 'localStorageService',
+            function($http, $scope, $sce, $timeout, localStorageService) {
+            $scope.songs = [];
+            $scope.songQueue = [];
+            $scope.loading = false;
+            $scope.profile = true;
+            $scope.queue = false;
+            $scope.remote = false;
+            $http.get('/api/music/500').success(function (data) {
+                $scope.songs = data;
+                $(".loader").fadeOut("slow");
+                $.getScript("../scripts/music/audioplayback.js").done(function (script, textStatus) {
+                });
+            });
+
+            $scope.addToQueue = function (song) {
+                $scope.songQueue.push(song);
+                //localStorageService.add('queue', $scope.queue);
+                //var queue = localStorageService.get('queue');
+                //console.log(queue);
+            };
+
+            $scope.loadProfile = function () {
+                $scope.loading = true;
+                $scope.remote = false;
+                $scope.queue = false;
+                $scope.profile = true;
+                $timeout(function () {
+                    $scope.loading = false;
+                }, 2000);
+
+            };
+
+            $scope.loadRemote = function () {
+                //$('#content_loader').show();
+                //$scope.test = '<div class="row"><div class="col-lg-8 pull-left" style="padding:0px;"><input class="form-control" placeholder="Search" ng-model="search" style="width:100%"></div></div><div class="row" id="table"><table class="table table-hover" id="music-playlist"><thead><tr><th id="table-share" class="mobile-hide"></th><th id="table-song">Song Title</th><th id="table-artist" class="portrait-hide">Artist</th><th id="table-album" class="mobile-hide">Album</th><th id="table-genre">Genre</th><th id="table-length" class="portrait-hide">Length</th></tr></thead><tbody><tr ng-repeat="song in songs" ng-show="([song] | filter:search).length > 0" data-songid="{{song.SongID}}" data-songlink="http://www.ucsbjukebox.info/Music/{{song.FilePath}}" data-song="{{song.SongTitle}}" data-artist="{{song.Artist}}" data-album="{{song.Album}}"><td class="mobile-hide"><button class="btn btn-musiq btn-sm queue-button pull-left" type="button" ng-click="addToQueue(song)"><span class="glyphicon glyphicon-plus"></span></button></td><td><div class="text-wrap portrait-bold"><span class="song-span">{{song.SongTitle}}</span><input class="song-input" hidden/></div><div class="text-wrap portrait-only"><span>{{song.Artist}}</span></div></td><td class="portrait-hide"><div class="text-wrap"><span class="artist-span">{{song.Artist}}</span><input class="artist-input" hidden/></div></td><td class="mobile-hide"><div class="text-wrap"><span class="album-span">{{song.Album}}</span><input class="album-input" hidden/></div></td><td class="mobile-hide"><div class="text-wrap"><span class="album-span">{{song.Genre}}</span><input class="genre-input" hidden/></div></td><td class="portrait-hide"><div class="text-wrap"><span>{{song.Length}}</span><input hidden/></div></td></tr></tbody></table></div>';
+                $scope.loading = true;
+                $scope.profile = false;
+                $scope.queue = false;
+                $scope.remote = true;
+                $timeout(function () {
+                    $scope.loading = false;
+                }, 2000);
+            };
+
+            $scope.loadQueue = function () {
+                //$('#content_loader').show();
+                //$scope.test = ' <table class="table table-hover" id="music-playlist"><thead><tr><th id="table-share" class="mobile-hide"></th><th id="table-song">Song Title</th><th id="table-artist" class="portrait-hide">Artist</th><th id="table-album" class="mobile-hide">Album</th><th id="table-genre">Genre</th><th id="table-length" class="portrait-hide">Length</th></tr></thead><tbody><tr ng-repeat="song in queue" ng-show="([song] | filter:search).length > 0" data-songid="{{song.SongID}}" data-songlink="http://www.ucsbjukebox.info/Music/{{song.FilePath}}" data-song="{{song.SongTitle}}" data-artist="{{song.Artist}}" data-album="{{song.Album}}"><td class="mobile-hide"><button class="btn btn-musiq btn-sm queue-button pull-left" type="button" ng-click="addToQueue(song)"><span class="glyphicon glyphicon-plus"></span></button></td><td><div class="text-wrap portrait-bold"><span class="song-span">{{song.SongTitle}}</span><input class="song-input" hidden/></div><div class="text-wrap portrait-only"><span>{{song.Artist}}</span></div></td><td class="portrait-hide"><div class="text-wrap"><span class="artist-span">{{song.Artist}}</span><input class="artist-input" hidden/></div></td><td class="mobile-hide"><div class="text-wrap"><span class="album-span">{{song.Album}}</span><input class="album-input" hidden/></div></td><td class="mobile-hide"><div class="text-wrap"><span class="album-span">{{song.Genre}}</span><input class="genre-input" hidden/></div></td><td class="portrait-hide"><div class="text-wrap"><span>{{song.Length}}</span><input hidden/></div></td></tr></tbody></table>';
+                $scope.profile = false;
+                $scope.remote = false;
+                $scope.queue = true;
+                
+            };
+
+            }]);
+    </script>
+</head>
+
+<div class="loader"></div>
+<div class="musiq-container">
+    <div class="loader" id="content_loader" ng-show="loading"></div>
+    <div ng-show="profile">
+        <div class="row">
+            <div class="col-lg-8 pull-left" style="padding:0px;">
+                <input class="form-control" placeholder="Search" ng-model="search" style="width:100%">
+            </div>
+            <div class="col col-lg-4">
+                <div class="pull-right">
+                    <a class="btn btn-musiq btn-margin mobile-hide" id="uploadButton">
+                        <span class="glyphicon glyphicon-music"></span>
+                        Upload Music
+                    </a>
+                    <a class="btn btn-musiq btn-margin portrait-hide mobile-hide" data-toggle="modal" href="#createPlaylistModal">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        Create Playlist
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @Html.Partial("_MusicPartial")
+        </div>
+    </div>
+    <div ng-show="queue">
+        <div class="row">
+            @Html.Partial("_QueuePartial")
+        </div>
+    </div>
+    <div ng-show="remote">
+        <div class="row">
+            <div class="col-lg-8 pull-left" style="padding:0px;">
+                <input class="form-control" placeholder="Search" ng-model="search" style="width:100%">
+            </div>
+        </div>
+        <div class="row">
+            @Html.Partial("_RemotePartial")
+        </div>
+    </div>
+</div>
+@Html.Partial("_ProfileModals")
+
+@section Scripts {
+<script type="text/javascript" src="~/Scripts/Upload/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="~/Scripts/Upload/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="~/Scripts/Upload/jquery.fileupload.js"></script>
+    <script>    
+        $(document).ready(function(){
+            $("#uploadButton").click(function (event) {
+                event.preventDefault();
+                $('.uploader').fadeIn('slow');
+            });
+            $("#upload_close").click(function (event) {
+                event.preventDefault();
+                $('.uploader').fadeOut('slow');
+            });
+        });
+        $('.uploader').on(
+    'dragover',
+    function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+)
+        $('uploader').on(
+            'dragenter',
+            function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        )
+        $('.uploader').on(
+    'drop',
+    function (e) {
+        e.preventDefault();
+        $('.uploader').fadeOut('slow');
+    }
+);
+</script>
+<script>
+    $(function () {
+        $('#fileupload').fileupload({
+            dataType: 'json',
+            //add: function (e, data) {
+            //    data.context = $('<p/>').text('Uploading...').appendTo($('#uploaded-songs'));
+            //    data.submit();
+            //},
+            done: function (e, data) {
+                var fragment = document.createDocumentFragment();
+                $.each(data.result, function (index, file) {
+                    var song = file.SongTitle;
+                    var artist = file.Artist;
+                    var album = file.Album;
+                    var length = file.Length;
+
+                    console.log(song);
+
+                    $("#uploaded-songs-table > tbody:last").append('<tr><td>' + song + '</td><td>' + artist + '</td><td>' + album + '</td><td>' + length + '</td>');
+
+                });
+            },
+            progressall: function (e, data) {
+                $('#uploaded-songs-table').fadeIn('medium');
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#progress .progress-bar').css(
+                    'width',
+                    progress + '%'
+                );
+
+            },
+            fail: function (e, data) {
+                // data.errorThrown
+                // data.textStatus;
+                // data.jqXHR;
+                console.log(data.errorThrown);
+            }
+
+        });
+    });
+
+    //Right-Click Dropdown
+    $(function () {
+
+        var $contextMenu = $("#contextMenu");
+        var $rowClicked;
+
+        $("body").on("contextmenu", "table tr", function (e) {
+            $rowClicked = $(this)
+            if ($rowClicked.hasClass("active-link") == false) {
+                $rowClicked.addClass('active-link').siblings().removeClass('active-link');
+            }
+            $contextMenu.css({
+                display: "block",
+                left: e.pageX,
+                top: e.pageY
+            });
+            return false;
+        });
+
+        $contextMenu.on("click", "a", function () {
+            var playlistId = parseInt($(this).attr('data-playlistid'));
+            var links = document.getElementsByClassName("active-link");
+            var songIds = [].map.call(links, function (el) {
+                return parseInt(el.getAttribute("data-songid"));
+            });
+            console.log($(this).html())
+            if ($(this).html() == "Get Artwork") {
+                $.ajax({
+                    url: "/Music/UpdateArtwork",
+                    traditional: true,
+                    data: { SongIds: songIds },
+                    success: function (data) {
+                        console.log("success");
+                    }
+                });
+            }
+            else {
+                $.ajax({
+                    url: "/Playlist/AddSongs",
+                    traditional: true,
+                    data: { PlaylistId: playlistId, SongIds: songIds },
+                    success: function (data) {
+                    }
+                });
+            }
+
+
+            $contextMenu.hide();
+        });
+
+        $(document).click(function () {
+            $contextMenu.hide();
+        });
+        
+    });
+</script>
+@*<script>
+    $(document).ready(function () {
+        var socket = io.connect("ec2-54-186-63-97.us-west-2.compute.amazonaws.com:9123");
+        socket.on('connect', function () {
+            socket.on('message', function (msg) {
+                console.log(msg);
+                //var command = JSON.parse(msg);
+                //// This is where the magic is!
+                //var song = $(playlist.find("[data-songid='" + command.id + "']"));
+                //console.log(song);
+
+            });
+        });
+
+        var remotePlaylist = $('#remote-playlist');
+        remotePlaylist.find('tbody tr').dblclick(function (e) {
+            console.log("double click");
+            e.preventDefault();
+
+            var command = {
+                id: $(this).data('songid'),
+                action: "dblclick"
+            };
+
+            socket.send(JSON.stringify(command));
+        });
+
+    });
+</script>*@
+
+
+
+}

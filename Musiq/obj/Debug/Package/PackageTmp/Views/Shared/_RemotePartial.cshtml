@@ -1,0 +1,32 @@
+﻿
+<div class="row" id="table">
+        <table class="table table-hover" id="remote-playlist">
+            <thead>
+                <tr>
+                    <th id="table-share" class="mobile-hide"></th>
+                    <th id="table-song">Song Title</th>
+                    <th id="table-artist" class="portrait-hide">Artist</th>
+                    <th id="table-album" class="mobile-hide">Album</th>
+                    <th id="table-genre">Genre</th>
+                    <th id="table-length" class="portrait-hide">Length</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="song in songs" ng-show="([song] | filter:search).length > 0" data-songid="{{song.SongID}}" data-songlink="http://www.ucsbjukebox.info/Music/{{song.FilePath}}" data-song="{{song.SongTitle}}" data-artist="{{song.Artist}}" data-album="{{song.Album}}">
+                    <td class="mobile-hide">
+                        <button class="btn btn-musiq btn-sm queue-button pull-left" type="button" ng-click="addToQueue(song)">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </td>
+                    <td>
+                        <div class="text-wrap portrait-bold"><span class="song-span">{{song.SongTitle}}</span><input class="song-input" hidden /></div>
+                        <div class="text-wrap portrait-only"><span>{{song.Artist}}</span></div>
+                    </td>
+                    <td class="portrait-hide"><div class="text-wrap"><span class="artist-span">{{song.Artist}}</span><input class="artist-input" hidden /></div></td>
+                    <td class="mobile-hide"><div class="text-wrap"><span class="album-span">{{song.Album}}</span><input class="album-input" hidden /></div></td>
+                    <td class="mobile-hide"><div class="text-wrap"><span class="album-span">{{song.Genre}}</span><input class="genre-input" hidden /></div></td>
+                    <td class="portrait-hide"><div class="text-wrap"><span>{{song.Length}}</span><input hidden /></div></td>
+                </tr>
+            </tbody>
+        </table>
+</div>

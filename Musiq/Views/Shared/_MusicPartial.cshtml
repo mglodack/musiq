@@ -1,9 +1,8 @@
-﻿<div ng-controller="MusiqController" id="music-container">
+﻿
     <table class="table table-hover" id="music-playlist">
         <thead>
             <tr>
                 <th id="table-share" class="mobile-hide"></th>
-                @*<th id="table-artwork" class="portrait-only"></th>*@
                 <th id="table-song">Song Title</th>
                 <th id="table-artist" class="portrait-hide">Artist</th>
                 <th id="table-album" class="mobile-hide">Album</th>
@@ -18,9 +17,6 @@
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
                 </td>
-                @*<td class="portrait-only">
-                        <img src="~/img/defaultartwork.png" class="album-artwork" />
-                    </td>*@
                 <td>
                     <div class="text-wrap portrait-bold"><span class="song-span">{{song.SongTitle}}</span><input class="song-input" hidden /></div>
                     <div class="text-wrap portrait-only"><span>{{song.Artist}}</span></div>
@@ -32,4 +28,3 @@
             </tr>
         </tbody>
     </table>
-</div>

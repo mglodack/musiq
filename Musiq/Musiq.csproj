@@ -205,7 +205,9 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\Site.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\page-loader.gif" />
     <Content Include="Scripts\angular-local-storage.js" />
     <Content Include="Scripts\angular-route.min.js" />
@@ -228,6 +230,7 @@
     <Content Include="Scripts\Music\audioPlayback.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\socket.io.min.js" />
     <Content Include="Scripts\Upload\jquery.fileupload.js" />
     <Content Include="Scripts\Upload\jquery.iframe-transport.js" />
     <Content Include="Scripts\Upload\jquery.ui.widget.js" />
@@ -262,6 +265,7 @@
     <Content Include="Views\Shared\_MusicPartial.cshtml" />
     <Content Include="Views\Shared\_ProfileModals.cshtml" />
     <Content Include="Views\Shared\_QueuePartial.cshtml" />
+    <Content Include="Views\Shared\_RemotePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
