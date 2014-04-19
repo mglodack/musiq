@@ -122,6 +122,9 @@ C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\bin\Microsoft.Owin.Security.Mic
 C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\obj\Debug\Musiq.csprojResolveAssemblyReference.cache
 C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\obj\Debug\OnSnap.dll
 C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\obj\Debug\OnSnap.pdb
+C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\bin\taglib-sharp.dll
+C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\bin\ICSharpCode.SharpZipLib.dll
+C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\bin\taglib-sharp.pdb
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\OnSnap.dll.config
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\OnSnap.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\OnSnap.pdb
@@ -185,9 +188,3 @@ C:\Users\Glodack\Desktop\musiq\Musiq\bin\Microsoft.Owin.Security.MicrosoftAccoun
 C:\Users\Glodack\Desktop\musiq\Musiq\obj\Debug\Musiq.csprojResolveAssemblyReference.cache
 C:\Users\Glodack\Desktop\musiq\Musiq\obj\Debug\OnSnap.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\obj\Debug\OnSnap.pdb
-C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\bin\taglib-sharp.dll
-C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\bin\ICSharpCode.SharpZipLib.dll
-C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\bin\taglib-sharp.pdb
-C:\Users\Glodack\Desktop\musiq\Musiq\bin\taglib-sharp.dll
-C:\Users\Glodack\Desktop\musiq\Musiq\bin\ICSharpCode.SharpZipLib.dll
-C:\Users\Glodack\Desktop\musiq\Musiq\bin\taglib-sharp.pdb

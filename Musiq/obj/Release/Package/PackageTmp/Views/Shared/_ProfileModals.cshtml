@@ -1,0 +1,88 @@
+﻿<!-------------- Upload Modal ------------>
+<div class="modal fade" id="uploadMusicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Upload Music</h4>
+            </div>
+            <div id="upload-container">
+                <span class="btn btn-success fileinput-button">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>Select files</span>
+                    <!-- The file input field used as target for the file upload widget -->
+                    <input id="fileupload" type="file" name="files[]" data-url="/Music/Upload" multiple="">
+                </span>
+
+                <!-- The global progress bar -->
+                <div id="progress" class="progress">
+                    <div class="progress-bar progress-bar-success" style="width: 0%;"></div>
+                </div>
+
+                <div id="uploaded-songs">
+                    <table class="table table-hover" id="uploaded-songs-table">
+                        <thead>
+                            <tr>
+                                <th id="table-song">Song Title</th>
+                                <th id="table-song">Artist</th>
+                                <th id="table-song">Album</th>
+                                <th id="table-song">Length</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-------------- Create Playlist Modal ------------>
+<div class="modal fade" id="createPlaylistModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Create Playlist</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="col col-lg-12">
+                        <div>
+                            <h4 class="modal-header-description">Choose a name for your playlist:  </h4>
+                            <form role="form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="playlist-name">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary pull-right" id="create-playlist-btn">Create</button>
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-------------- Right Click Dropdown ------------>
+<div id="contextMenu" class="dropdown clearfix">
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display:block;position:static;margin-bottom:5px;">
+        <li><a tabindex="-1" href="#">Play Song Now</a></li>
+        <li><a tabindex="-1" href="#">Play Song Next</a></li>
+        <li><a tabindex="-1" href="#">Play Song Last</a></li>
+        <li class="divider"></li>
+        <li><a tabindex="-1" href="#">Remove Song From Profile</a></li>
+        <li class="divider"></li>
+        <li><a tabindex="-1" href="#">Get Artwork</a></li>
+        <li class="dropdown-submenu">
+            <a tabindex="-1" href="#">Add To Playlist</a>
+            <ul class="dropdown-menu" id="dropdown-playlists">
+                
+            </ul>
+        </li>
+    </ul>
+</div>

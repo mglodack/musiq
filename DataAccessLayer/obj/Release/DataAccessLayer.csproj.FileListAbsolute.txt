@@ -1,0 +1,10 @@
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\bin\Release\DataAccessLayer.dll.config
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\bin\Release\DataAccessLayer.dll
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\bin\Release\DataAccessLayer.pdb
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\bin\Release\EntityFramework.dll
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\bin\Release\EntityFramework.xml
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\obj\Release\DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\obj\Release\DataAccessLayer.dll
+C:\Users\Glodack\Desktop\musiq\DataAccessLayer\obj\Release\DataAccessLayer.pdb
