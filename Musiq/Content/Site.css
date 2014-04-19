@@ -11,6 +11,13 @@ font-family: "HelveticaLight";
 font-weight: 300;
 position: fixed;
 margin-left: 35px;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 /**navigation**/
 .navbar-inverse {
@@ -181,7 +188,7 @@ color: white;
     min-width: 100px;
 }
 
-#table {
+table {
     margin-right: -15px;
     margin-left: -30px;
     -webkit-touch-callout: none;
@@ -354,6 +361,12 @@ a:hover{
 	z-index: 9999;
 	background: url('../images/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
 }
+
+#content_loader {
+    margin-left: 260px;
+    margin-top: 61px;
+}
+
 .uploader {
     display:none;
 	position: fixed;

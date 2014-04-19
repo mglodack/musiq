@@ -1,5 +1,9 @@
-﻿$(document).ready(function () {
+﻿var socket;
+
+$(document).ready(function () {
+
     var audio;
+    var remotePlaylist;
     var playlist;
     var tracks;
     var current;
@@ -77,6 +81,32 @@
             current = (link.index());
             run($(link), audio[0]);
         });
+
+        socket = io.connect("ec2-54-186-63-97.us-west-2.compute.amazonaws.com:9123");
+        socket.on('connect', function () {
+            socket.on('message', function (msg) {
+                console.log(msg);
+                var command = JSON.parse(msg);
+                // This is where the magic is!
+                var song = $(playlist.find("[data-songid='" + command.id + "']"));
+                $(song).trigger('dblclick');
+
+            });
+        });
+
+        remotePlaylist = $('#remote-playlist');
+        remotePlaylist.find('tbody tr').dblclick(function (e) {
+            console.log("double click");
+            e.preventDefault();
+
+            var command = {
+                id: $(this).data('songid'),
+                action: "dblclick"
+            };
+
+            socket.send(JSON.stringify(command));
+        });
+
     }
     //End init
 

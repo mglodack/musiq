@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title urMusiQ</title>
     @Styles.Render("~/Content/css")
+    <link href='http://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css'>
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-    <link href='http://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css'>
-
+    <script src="~/Scripts/socket.io.min.js"></script>
 </head>
 <body>
+    <div ng-controller="MusiqController" id="music-container">
         @if (User.Identity.Name != "")
         {
             <div class="navbar navbar-inverse navbar-fixed-top">
@@ -45,8 +46,9 @@
                     </div>
                 </div>
                 <ul class="text-center" style="margin-top:10px;">
-                    <li class=""><a class="sidr-links" id="urProfile" href="#"><span class="glyphicon glyphicon-user" style="color: rgb(81, 199, 209); margin-right: 10px;"></span>Profile</a></li>
-                    <li><span class="glyphicon glyphicon-headphones" style="color: rgb(81, 199, 209); margin-right: 10px;"></span><a class="sidr-links" id="urQueue" href="#">Queue</a></li>
+                    <li class=""><a class="sidr-links" id="urProfile" href="#" ng-click="loadProfile();"><span class="glyphicon glyphicon-user" style="color: rgb(81, 199, 209); margin-right: 10px;"></span>Profile</a></li>
+                    <li><span class="glyphicon glyphicon-headphones" style="color: rgb(81, 199, 209); margin-right: 10px;"></span><a class="sidr-links" id="urQueue" href="#" ng-click="loadQueue();">Queue</a></li>
+                    <li><span class="glyphicon glyphicon-phone" style="color: rgb(81, 199, 209); margin-right: 10px;"></span><a class="sidr-links" id="urRemote" href="#" ng-click="loadRemote();">Remote</a></li>
                     <li><a class="sidr-links" href="#"><span class="glyphicon glyphicon-log-out" style="color: rgb(81, 199, 209); margin-right: 10px;"></span>Logout</a></li>
                 </ul>
             </div>
@@ -58,6 +60,7 @@
                     <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
                 </footer>*@
         </div>
+    </div>
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
@@ -65,6 +68,7 @@
         <script>
             var toggle = false;
             var scrnwidth;
+            var socket;
             $(document).ready(function () {
                 scrnwidth = $(this).width;
                 $('#sidr-btn').click(function (e) {
@@ -93,34 +97,10 @@
                     }
                     setTimeout('$("#sidr-btn").removeAttr("disabled")', 500);
                 });
-                //$(function () {
-                //    var prev;
-                //    $('#urProfile').hover(function () {
-                //        prev = $(this).text();
-                //        $(this).text("urProfile");
-                //    }, function () {
-                //        $(this).text(prev)
-                //    });
-                //});
-                //$(function () {
-                //    var prev;
-                //    $('#urQueue').hover(function () {
-                //        prev = $(this).text();
-                //        $(this).text("urQueue");
-                //    }, function () {
-                //        $(this).text(prev)
-                //    });
-                //});
 
-                $('#urQueue').click(function (e) {
-                    $.ajax({
-                        url: "/Queue/Index",
-                        success: function (data) {
-                            $('#table').html(data);
-                        }
-                    });
-                });
+
             });
+
         </script>
 </body>
 

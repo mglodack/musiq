@@ -21,7 +21,7 @@ namespace Musiq.Controllers
         public List<SongModel> GetSongs()
         {
             BusinessLogicLayer _context = new BusinessLogicLayer();
-            return _context.GetSongs();
+            return _context.GetSongs().OrderByDescending(s => s.SongID).ToList();
         }
 
         [Route("{numberOfSongs}")]
