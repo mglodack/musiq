@@ -1,4 +1,60 @@
-﻿<div class="loader"></div>
+﻿<head>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-local-storage.js"></script>
+    <script>
+        var musiqApp = angular.module('musiqApp', ['LocalStorageModule']);
+
+        //musiqApp.factory('userService', function() {
+
+        //    var service = {
+        //        queue: []
+        //    };
+
+        //    service.addToQueue = function (song) {
+        //        service.queue.push(song);
+        //    };
+        //    return service;
+        //});
+
+        musiqApp.controller('MusiqController', ['$http', '$scope', 'localStorageService',
+            function($http, $scope, localStorageService) {
+            $scope.songs = [];
+            $scope.queue = [];
+            $http.get('/api/music/150').success(function (data) {
+                $scope.songs = data;
+                $(".loader").fadeOut("slow");
+                $.getScript("../scripts/music/audioplayback.js").done(function (script, textStatus) {
+                });
+            });
+
+            $scope.addToQueue = function (song) {
+                $scope.queue.push(song);
+                localStorageService.add('queue', $scope.queue);
+                var queue = localStorageService.get('queue');
+                console.log(queue);
+            };
+
+        }]);
+
+        musiqApp.controller('QueueController', ['$http', '$scope', 'localStorageService',
+        function ($http, $scope, localStorageService) {
+            $scope.songs = [];
+            $scope.queue = localStorageService.get('queue');
+
+            $scope.addToQueue = function (song) {
+                $scope.queue.push(song);
+                localStorageService.add('queue', $scope.queue);
+                var queue = localStorageService.get('queue');
+                console.log(queue);
+            };
+
+        }]);
+
+
+    </script>
+</head>
+
+<div class="loader"></div>
 <div class="uploader" id="fileupload">
     <a class="btn btn-upload-close btn-margin portrait-hide pull-right" id="upload_close">
         <span class="glyphicon glyphicon-remove"></span>
@@ -32,13 +88,10 @@
             </div>
         </div>
     </div>
-    <div class="row" id="table">
-        @Html.Partial("_MusicPartial")
+        <div class="row" id="table">
+            @Html.Partial("_MusicPartial")
+        </div>
     </div>
-</div>
-@*<div class="md-overlay">
-    <h1 class="upload-drop">Drop Music<span class="glyphicon glyphicon-music"></span></h1>
-</div>*@
 @Html.Partial("_ProfileModals")
 
 @section Scripts {

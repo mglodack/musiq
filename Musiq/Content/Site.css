@@ -207,10 +207,16 @@ input:focus{
 
 #table-artist{
     width: 20%;
+    min-width: 209px;
 }
 
 #table-song{
     width: 35%;
+}
+
+#table-genre {
+    width: 10%;
+    min-width: 100px;
 }
 
 #table {
@@ -293,7 +299,7 @@ input[type="button"],select{
     float: none;
     margin: 0 auto;
 }
-#login {
+.login {
     width:25%;
    margin: 0 auto;
 }
@@ -307,6 +313,12 @@ input[type="button"],select{
     min-width: 215px;
     margin:0 auto;
     width:25%;
+}
+
+#registered {
+margin-top: 8px;
+width: 25%;
+margin: 0 auto;
 }
 .fieldset-login{
     margin-bottom: 1em;
