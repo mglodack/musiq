@@ -253,43 +253,6 @@ table {
     display: none;
 }
 
-@media only screen and ( max-width: 768px ) {
-
-    .mobile-hide {
-        display: none;
-    }
-}
-
-/* Smartphones (portrait) ----------- */
-@media only screen 
-and (max-width : 320px) {
-    .portrait-hide {
-        display: none;
-    }
-
-    .portrait-only {
-        display: block;
-    }
-
-    .portrait-bold {
-        font-weight: bold;
-    }
-
-    .album-artwork {
-        max-width: 40px;
-    }
-
-
-    #table-artwork {
-        width: 20%;
-        min-width: 40px;
-    }
-
-    #table-song {
-        width: 80%;
-    }
-}
-
 /*Login Page**/
 input[type="button"],select{
     outline:none;

@@ -1,6 +1,4 @@
 ﻿<head>
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/angular-local-storage.js"></script>
     <script>
         var musiqApp = angular.module('musiqApp', ['LocalStorageModule']);
 
@@ -36,7 +34,7 @@
             $scope.profile = true;
             $scope.queue = false;
             $scope.remote = false;
-            $http.get('/api/music/500').success(function (data) {
+            $http.get('/api/music/').success(function (data) {
                 $scope.songs = data;
                 $(".loader").fadeOut("slow");
                 $.getScript("../scripts/music/audioplayback.js").done(function (script, textStatus) {

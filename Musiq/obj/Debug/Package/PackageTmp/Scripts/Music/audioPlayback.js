@@ -82,7 +82,7 @@ $(document).ready(function () {
             run($(link), audio[0]);
         });
 
-        socket = io.connect("ec2-54-186-63-97.us-west-2.compute.amazonaws.com:9123");
+        socket = io.connect("ec2-54-186-101-149.us-west-2.compute.amazonaws.com:9123");
         socket.on('connect', function () {
             socket.on('message', function (msg) {
                 console.log(msg);

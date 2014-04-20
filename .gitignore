@@ -2,3 +2,7 @@
 /Musiq/bin
 
 *.dll
+/Musiq/bin/*
+/Musiq/obj/*
+/packages/*
+Release
