@@ -13,9 +13,12 @@ namespace DataAccessLayer.Models
         public string Username { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
         public List<SongModel> Songs { get; set; }
         public List<PlaylistModel> Playlists { get; set; }
         public string ProfilePicURL { get; set; }
+        public bool login {get; set;}
 
 
     }

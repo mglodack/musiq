@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -67,9 +68,6 @@
     </Compile>
     <Compile Include="Entities\C__MigrationHistory.cs">
       <DependentUpon>OnSnapAccounts.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Image.cs">
-      <DependentUpon>Musiq.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Musiq.Context.cs">
       <AutoGen>True</AutoGen>
@@ -101,20 +99,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MusiqAccounts.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Entities\OnSnapAlbum.cs">
-      <DependentUpon>Musiq.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\OnSnapImage.cs">
-      <DependentUpon>Musiq.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entities\Playlist.cs">
       <DependentUpon>Musiq.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Role.cs">
       <DependentUpon>OnSnapAccounts.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Room.cs">
-      <DependentUpon>Musiq.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Song.cs">
       <DependentUpon>Musiq.tt</DependentUpon>
@@ -188,6 +177,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entities\Musiq.edmx.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

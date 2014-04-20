@@ -31,7 +31,6 @@ namespace DataAccessLayer.Repositories
                 Genre = s.Genre,
                 FilePath = s.FilePath,
                 Length = s.Length,
-                Likes = s.Likes,
                 ArtworkURL = s.ArtworkURL
             });
         }
@@ -59,6 +58,38 @@ namespace DataAccessLayer.Repositories
                 //Add the account association to the song, and push the song to the database
                 entity.Accounts.Add(account);
                 _context.Songs.Add(entity);
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+        }
+    /**Login**/
+        public IQueryable<AccountModel> GetAccounts()
+        {
+            return _context.Accounts.Select(s => new AccountModel
+            {
+                LoginId = s.AccountId,
+                Username = s.Username,
+                FirstName = s.FirstName,
+                LastName = s.LastName,          
+                ProfilePicURL = s.ProfilePicURL
+                //Add songs and playlists
+            });
+        }
+        public void AddAccount(AccountModel account)
+        {
+            try
+            {
+                Account entity = ModelConversions.AccountModelToEntity(account);
+                _context.Accounts.Add(entity);
                 _context.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)

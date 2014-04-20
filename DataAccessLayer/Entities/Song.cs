@@ -28,13 +28,10 @@ namespace DataAccessLayer.Entities
         public string Artist { get; set; }
         public string Genre { get; set; }
         public string Album { get; set; }
-        public int Likes { get; set; }
         public bool isAdded { get; set; }
-        public Nullable<int> Room_Id { get; set; }
         public int NumberOfPlays { get; set; }
         public string ArtworkURL { get; set; }
     
-        public virtual Room Room { get; set; }
         public virtual ICollection<SongPlay> SongPlays { get; set; }
         public virtual ICollection<Account> Accounts { get; set; }
         public virtual ICollection<Playlist> Playlists { get; set; }

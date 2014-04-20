@@ -2,61 +2,27 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="jukeboxModelStoreContainer" CdmEntityContainer="MusiqEntities">
     <EntitySetMapping Name="Accounts">
-      <EntityTypeMapping TypeName="jukeboxModel.Account">
+      <EntityTypeMapping TypeName="IsTypeOf(jukeboxModel.Account)">
         <MappingFragment StoreEntitySet="Accounts">
-          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
           <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
-          <ScalarProperty Name="Room_Id" ColumnName="Room_Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Images">
-      <EntityTypeMapping TypeName="jukeboxModel.Image">
-        <MappingFragment StoreEntitySet="Images">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ImageDirectory" ColumnName="ImageDirectory" />
-          <ScalarProperty Name="ImageDescription" ColumnName="ImageDescription" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="OnSnapAlbums">
-      <EntityTypeMapping TypeName="jukeboxModel.OnSnapAlbum">
-        <MappingFragment StoreEntitySet="OnSnapAlbums">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="AlbumName" ColumnName="AlbumName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="OnSnapImages">
-      <EntityTypeMapping TypeName="jukeboxModel.OnSnapImage">
-        <MappingFragment StoreEntitySet="OnSnapImages">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ImageDirectory" ColumnName="ImageDirectory" />
-          <ScalarProperty Name="ImageDescription" ColumnName="ImageDescription" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ProfilePicURL" ColumnName="ProfilePicURL" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Playlists">
-      <EntityTypeMapping TypeName="jukeboxModel.Playlist">
+      <EntityTypeMapping TypeName="IsTypeOf(jukeboxModel.Playlist)">
         <MappingFragment StoreEntitySet="Playlists">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Rooms">
-      <EntityTypeMapping TypeName="jukeboxModel.Room">
-        <MappingFragment StoreEntitySet="Rooms">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="RoomName" ColumnName="RoomName" />
-          <ScalarProperty Name="RoomPassword" ColumnName="RoomPassword" />
-          <ScalarProperty Name="Privacy" ColumnName="Privacy" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="SongPlays">
-      <EntityTypeMapping TypeName="jukeboxModel.SongPlay">
+      <EntityTypeMapping TypeName="IsTypeOf(jukeboxModel.SongPlay)">
         <MappingFragment StoreEntitySet="SongPlays">
           <ScalarProperty Name="AccountId" ColumnName="AccountId" />
           <ScalarProperty Name="SongId" ColumnName="SongId" />
@@ -66,7 +32,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Songs">
-      <EntityTypeMapping TypeName="jukeboxModel.Song">
+      <EntityTypeMapping TypeName="IsTypeOf(jukeboxModel.Song)">
         <MappingFragment StoreEntitySet="Songs">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
@@ -75,9 +41,7 @@
           <ScalarProperty Name="Artist" ColumnName="Artist" />
           <ScalarProperty Name="Genre" ColumnName="Genre" />
           <ScalarProperty Name="Album" ColumnName="Album" />
-          <ScalarProperty Name="Likes" ColumnName="Likes" />
           <ScalarProperty Name="isAdded" ColumnName="isAdded" />
-          <ScalarProperty Name="Room_Id" ColumnName="Room_Id" />
           <ScalarProperty Name="NumberOfPlays" ColumnName="NumberOfPlays" />
           <ScalarProperty Name="ArtworkURL" ColumnName="ArtworkURL" />
         </MappingFragment>
@@ -85,23 +49,15 @@
     </EntitySetMapping>
     <AssociationSetMapping Name="AccountAccount" TypeName="jukeboxModel.AccountAccount" StoreEntitySet="AccountAccount">
       <EndProperty Name="Accounts">
-        <ScalarProperty Name="LoginId" ColumnName="Following_LoginId" />
+        <ScalarProperty Name="AccountId" ColumnName="Followers_AccountId" />
       </EndProperty>
       <EndProperty Name="Accounts1">
-        <ScalarProperty Name="LoginId" ColumnName="Followers_LoginId" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="AccountAlbum" TypeName="jukeboxModel.AccountAlbum" StoreEntitySet="AccountAlbum">
-      <EndProperty Name="Accounts">
-        <ScalarProperty Name="LoginId" ColumnName="AccountId" />
-      </EndProperty>
-      <EndProperty Name="OnSnapAlbums">
-        <ScalarProperty Name="Id" ColumnName="AlbumId" />
+        <ScalarProperty Name="AccountId" ColumnName="Following_AccountId" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="AccountPlaylist" TypeName="jukeboxModel.AccountPlaylist" StoreEntitySet="AccountPlaylist">
       <EndProperty Name="Accounts">
-        <ScalarProperty Name="LoginId" ColumnName="Accounts_LoginId" />
+        <ScalarProperty Name="AccountId" ColumnName="Accounts_AccountId" />
       </EndProperty>
       <EndProperty Name="Playlists">
         <ScalarProperty Name="Id" ColumnName="Playlists_Id" />
@@ -109,18 +65,10 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="AccountSong" TypeName="jukeboxModel.AccountSong" StoreEntitySet="AccountSong">
       <EndProperty Name="Accounts">
-        <ScalarProperty Name="LoginId" ColumnName="Accounts_LoginId" />
+        <ScalarProperty Name="AccountId" ColumnName="Accounts_AccountId" />
       </EndProperty>
       <EndProperty Name="Songs">
         <ScalarProperty Name="Id" ColumnName="Songs_Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="AlbumImage" TypeName="jukeboxModel.AlbumImage" StoreEntitySet="AlbumImage">
-      <EndProperty Name="OnSnapAlbums">
-        <ScalarProperty Name="Id" ColumnName="AlbumId" />
-      </EndProperty>
-      <EndProperty Name="OnSnapImages">
-        <ScalarProperty Name="Id" ColumnName="ImageId" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="SongPlaylist" TypeName="jukeboxModel.SongPlaylist" StoreEntitySet="SongPlaylist">

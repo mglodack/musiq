@@ -9,6 +9,7 @@ using System.Web.Script.Services;
 
 namespace Musiq.Controllers
 {
+    [Authorize]
     public class MusicController : Controller
     {
         private BusinessLogicLayer _context { get; set; }

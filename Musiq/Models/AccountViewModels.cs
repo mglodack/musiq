@@ -28,7 +28,7 @@ namespace Musiq.Models
         public string ConfirmPassword { get; set; }
     }
 
-    public class LoginViewModel
+    public class LoginModel
     {
         [Required]
         [Display(Name = "User name")]
@@ -43,7 +43,7 @@ namespace Musiq.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
+    public class RegisterModel
     {
         [Required]
         [Display(Name = "User name")]

@@ -30,11 +30,9 @@ C:\Users\Glodack\Desktop\musiq\Musiq\bin\System.Web.Razor.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\System.Web.WebPages.Deployment.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\System.Web.WebPages.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\System.Web.WebPages.Razor.dll
-C:\Users\Glodack\Desktop\musiq\Musiq\bin\taglib-sharp.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\WebGrease.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\ICSharpCode.SharpZipLib.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\DataAccessLayer.pdb
-C:\Users\Glodack\Desktop\musiq\Musiq\bin\taglib-sharp.pdb
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\System.Web.Helpers.xml
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\System.Web.Mvc.xml
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\System.Web.Optimization.xml
@@ -64,3 +62,4 @@ C:\Users\Glodack\Desktop\musiq\Musiq\bin\Microsoft.Owin.Security.MicrosoftAccoun
 C:\Users\Glodack\Desktop\musiq\Musiq\obj\Release\Musiq.csprojResolveAssemblyReference.cache
 C:\Users\Glodack\Desktop\musiq\Musiq\obj\Release\OnSnap.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\obj\Release\OnSnap.pdb
+C:\Users\Glodack\Desktop\musiq\Musiq\bin\Content\Site.css

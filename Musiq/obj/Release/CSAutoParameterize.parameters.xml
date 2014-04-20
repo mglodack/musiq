@@ -6,4 +6,7 @@
   <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=184.168.47.21;Initial Catalog=jukebox_accounts;User ID=juliogarcia93;Password=ElGrullo10; Integrated Security=False" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Glodack\\Desktop\\musiq\\Musiq\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
+  <parameter name="DataAccessLayer.Entities.onSnapAccounts-Web.config Connection String" description="DataAccessLayer.Entities.onSnapAccounts Connection String used in web.config by the application to access the database." defaultValue="DataAccessLayer.Entities.onSnapAccounts_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Glodack\\Desktop\\musiq\\Musiq\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DataAccessLayer.Entities.onSnapAccounts']/@connectionString" />
+  </parameter>
 </parameters>

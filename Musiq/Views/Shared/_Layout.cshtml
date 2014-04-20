@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Musiq.ExtensionClasses.MusiqPrincipal Account = null;
+}
+
+<!DOCTYPE html>
 <html ng-app="musiqApp">
 <head>
     <meta charset="utf-8" />
@@ -13,57 +17,36 @@
     <script src="~/Scripts/angular-local-storage.js"></script>
 </head>
 <body>
-    <div ng-controller="MusiqController">
-        @*@if (User.Identity.Name != "")
-            {
-                <div class="navbar navbar-inverse navbar-fixed-top">
-                    <button id="sidr-btn" class="btn btn-danger btn-sm queue-button pull-left" type="button">
-                        <span class="glyphicon glyphicon-list"></span>
-                    </button>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                @Html.ActionLink("urMusiQ", "Index", "Profile", null, new { @class = "logo-navbar pull-right" })
-                                <div>
-                                    <div id="songText">
-                                        <div style="text-align: center;">
-                                            <strong id="current-song"></strong>
-                                            <span style="display:none;" id="by_span">by</span>
-                                            <strong id="current-artist"></strong>
-                                        </div>
-                                    </div>
-                                </div>
-                                <audio controls="controls" id="audio" preload="auto" tabindex="0" class="center"></audio>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }*@
 
-        <div id="sidr" class="sidr left" style="display: block;">
+    @if (User.Identity.IsAuthenticated)
+    { 
+        Account = (Musiq.ExtensionClasses.MusiqPrincipal) User;
+        <div id="sidr" class="sidr left" style="display: block;" ng-controller="SidebarController">
             <ul class="text-center" style="margin-top:10px;">
                 <li><h1 class="logo-navbar text-center">urMusiQ</h1></li>
-                <li class="sidr-profile" style="display:-webkit-inline-box;"><img class="img-circle" style="width:55px; height:55px; margin-left:30px; margin-top:30px;" src="~/Content/images/juliogarcia.jpg" /><h4 style="margin-top: 45px; margin-left: 15px; font-family: HelveticaLight; font-weight: 200; color: rgb(81, 199, 209);">Julio Garcia</h4></li>
+                <li class="sidr-profile" style="display:-webkit-inline-box;"><img class="img-circle" style="width:55px; height:55px; margin-left:30px; margin-top:30px;" src="~/@Account.UserInformation.ProfilePicURL" /><h4 style="margin-top: 45px; margin-left: 15px; font-family: HelveticaLight; font-weight: 200; color: rgb(81, 199, 209);">@Account.UserInformation.FirstName</h4></li>
                 <li class="sidr-followers sidr-followers-nums" style="display:-webkit-inline-box;"><a href="#" class="sidr-links" style="margin-left:39px; font-size: 16px;">Following</a><a class="sidr-links" href="#" style="margin-left: 18px; font-size: 16px;">Followers</a></li>
-                @*<li class="sidr-followers-nums"><a class="sidr-links" href="#">11</a><a class="sidr-links" href="#">11</a></li>*@
                 <li><input class="nav-form-control margin-center" placeholder="Search"></li>
                 <li><a class="sidr-links" href="#"><span class="glyphicon glyphicon-list-alt sidr-icons"></span>Top Songs</a></li>
                 <li><a class="sidr-links" id="urProfile" href="#" ng-click="loadProfile();"><span class="glyphicon glyphicon-music sidr-icons"></span>urMusic</a></li>
                 <li><a class="sidr-links" id="urQueue" href="#" ng-click="loadQueue();"><span class="glyphicon glyphicon-headphones sidr-icons"></span>Queue</a></li>
                 <li><a class="sidr-links" href="#" ng-click="loadRemote();"><span class="glyphicon glyphicon-phone sidr-icons"></span>Remote</a></li>
-                <li><a class="sidr-links" href="#"><span class="glyphicon glyphicon-cog sidr-icons"></span>Settings</a></li>
+                <li><a ng-click="settings = ! settings" class="sidr-links" href="#"><span class="glyphicon glyphicon-cog sidr-icons"></span>Settings</a></li>
+                <li ng-show="settings">Manage</li>
+                <li ng-show="settings">Logout</li>
                 <li><audio controls="controls" id="audio" preload="auto" tabindex="0" class="center"></audio></li>
             </ul>
         </div>
+    }
         <div class="container body-content">
             @RenderBody()
         </div>
-    </div>
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
         <script>
+            
             var toggle = false;
             var scrnwidth;
             var socket;
@@ -100,6 +83,75 @@
             });
 
         </script>
+    <script>
+        var musiqApp = angular.module('musiqApp', ['LocalStorageModule']);
+
+        musiqApp.controller('MusiqController', ['$http', '$scope',
+            function ($http, $scope) {
+                $scope.songs = [];
+                $scope.songQueue = [];
+                $scope.profile = true;
+                $scope.queue = false;
+                $scope.remote = false;
+                $scope.login = true;
+                $http.get('/api/music/').success(function (data) {
+                    $scope.songs = data;
+                    console.log($scope.songs);
+                    $.getScript("../scripts/music/audioplayback.js").done(function (script, textStatus) {
+                    });
+                });
+
+                $scope.addToQueue = function (song) {
+                    $scope.songQueue.push(song);
+                    //localStorageService.add('queue', $scope.queue);
+                    //var queue = localStorageService.get('queue');
+                    //console.log(queue);
+                };
+
+            }]);
+
+        musiqApp.controller('SidebarController', ['$http', '$scope',
+            function ($http, $scope) {
+                $scope.loading = false;
+                $scope.profile = true;
+                $scope.queue = false;
+                $scope.remote = false;
+                $scope.settings = false;
+
+                $scope.loadProfile = function () {
+                    $scope.loading = true;
+                    $scope.remote = false;
+                    $scope.queue = false;
+                    $scope.profile = true;
+                    $timeout(function () {
+                        $scope.loading = false;
+                    }, 2000);
+
+                };
+
+                $scope.loadRemote = function () {
+                    //$('#content_loader').show();
+                    //$scope.test = '<div class="row"><div class="col-lg-8 pull-left" style="padding:0px;"><input class="form-control" placeholder="Search" ng-model="search" style="width:100%"></div></div><div class="row" id="table"><table class="table table-hover" id="music-playlist"><thead><tr><th id="table-share" class="mobile-hide"></th><th id="table-song">Song Title</th><th id="table-artist" class="portrait-hide">Artist</th><th id="table-album" class="mobile-hide">Album</th><th id="table-genre">Genre</th><th id="table-length" class="portrait-hide">Length</th></tr></thead><tbody><tr ng-repeat="song in songs" ng-show="([song] | filter:search).length > 0" data-songid="{{song.SongID}}" data-songlink="http://www.ucsbjukebox.info/Music/{{song.FilePath}}" data-song="{{song.SongTitle}}" data-artist="{{song.Artist}}" data-album="{{song.Album}}"><td class="mobile-hide"><button class="btn btn-musiq btn-sm queue-button pull-left" type="button" ng-click="addToQueue(song)"><span class="glyphicon glyphicon-plus"></span></button></td><td><div class="text-wrap portrait-bold"><span class="song-span">{{song.SongTitle}}</span><input class="song-input" hidden/></div><div class="text-wrap portrait-only"><span>{{song.Artist}}</span></div></td><td class="portrait-hide"><div class="text-wrap"><span class="artist-span">{{song.Artist}}</span><input class="artist-input" hidden/></div></td><td class="mobile-hide"><div class="text-wrap"><span class="album-span">{{song.Album}}</span><input class="album-input" hidden/></div></td><td class="mobile-hide"><div class="text-wrap"><span class="album-span">{{song.Genre}}</span><input class="genre-input" hidden/></div></td><td class="portrait-hide"><div class="text-wrap"><span>{{song.Length}}</span><input hidden/></div></td></tr></tbody></table></div>';
+                    $scope.loading = true;
+                    $scope.profile = false;
+                    $scope.queue = false;
+                    $scope.remote = true;
+                    $timeout(function () {
+                        $scope.loading = false;
+                    }, 2000);
+                };
+
+                $scope.loadQueue = function () {
+                    //$('#content_loader').show();
+                    //$scope.test = ' <table class="table table-hover" id="music-playlist"><thead><tr><th id="table-share" class="mobile-hide"></th><th id="table-song">Song Title</th><th id="table-artist" class="portrait-hide">Artist</th><th id="table-album" class="mobile-hide">Album</th><th id="table-genre">Genre</th><th id="table-length" class="portrait-hide">Length</th></tr></thead><tbody><tr ng-repeat="song in queue" ng-show="([song] | filter:search).length > 0" data-songid="{{song.SongID}}" data-songlink="http://www.ucsbjukebox.info/Music/{{song.FilePath}}" data-song="{{song.SongTitle}}" data-artist="{{song.Artist}}" data-album="{{song.Album}}"><td class="mobile-hide"><button class="btn btn-musiq btn-sm queue-button pull-left" type="button" ng-click="addToQueue(song)"><span class="glyphicon glyphicon-plus"></span></button></td><td><div class="text-wrap portrait-bold"><span class="song-span">{{song.SongTitle}}</span><input class="song-input" hidden/></div><div class="text-wrap portrait-only"><span>{{song.Artist}}</span></div></td><td class="portrait-hide"><div class="text-wrap"><span class="artist-span">{{song.Artist}}</span><input class="artist-input" hidden/></div></td><td class="mobile-hide"><div class="text-wrap"><span class="album-span">{{song.Album}}</span><input class="album-input" hidden/></div></td><td class="mobile-hide"><div class="text-wrap"><span class="album-span">{{song.Genre}}</span><input class="genre-input" hidden/></div></td><td class="portrait-hide"><div class="text-wrap"><span>{{song.Length}}</span><input hidden/></div></td></tr></tbody></table>';
+                    $scope.profile = false;
+                    $scope.remote = false;
+                    $scope.queue = true;
+
+                };
+
+            }]);
+    </script>
 
 </body>
 
