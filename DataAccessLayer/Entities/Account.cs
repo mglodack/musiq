@@ -17,24 +17,22 @@ namespace DataAccessLayer.Entities
         public Account()
         {
             this.SongPlays = new HashSet<SongPlay>();
-            this.Accounts1 = new HashSet<Account>();
-            this.Accounts = new HashSet<Account>();
-            this.OnSnapAlbums = new HashSet<OnSnapAlbum>();
+            this.Following = new HashSet<Account>();
+            this.Followers = new HashSet<Account>();
             this.Playlists = new HashSet<Playlist>();
             this.Songs = new HashSet<Song>();
         }
     
-        public int LoginId { get; set; }
+        public int AccountId { get; set; }
         public string Username { get; set; }
-        public Nullable<int> RoomId { get; set; }
-        public Nullable<int> Room_Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Password { get; set; }
+        public string ProfilePicURL { get; set; }
     
-        public virtual Room Room { get; set; }
-        public virtual Room Room1 { get; set; }
         public virtual ICollection<SongPlay> SongPlays { get; set; }
-        public virtual ICollection<Account> Accounts1 { get; set; }
-        public virtual ICollection<Account> Accounts { get; set; }
-        public virtual ICollection<OnSnapAlbum> OnSnapAlbums { get; set; }
+        public virtual ICollection<Account> Following { get; set; }
+        public virtual ICollection<Account> Followers { get; set; }
         public virtual ICollection<Playlist> Playlists { get; set; }
         public virtual ICollection<Song> Songs { get; set; }
     }

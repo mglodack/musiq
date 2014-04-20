@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="song in songs" ng-show="([song] | filter:search).length > 0" data-songid="{{song.SongID}}" data-songlink="http://www.ucsbjukebox.info/Music/{{song.FilePath}}" data-song="{{song.SongTitle}}" data-artist="{{song.Artist}}" data-album="{{song.Album}}">
+            <tr ng-repeat="song in songs" ng-show="([song] | filter:search).length > 0" data-songid="{{song.SongID}}" data-songlink="http://localhost:2275/Music/{{song.FilePath}}" data-song="{{song.SongTitle}}" data-artist="{{song.Artist}}" data-album="{{song.Album}}">
                 <td class="mobile-hide">
                     <button class="btn btn-musiq btn-sm queue-button pull-left" type="button" ng-click="addToQueue(song)">
                         <span class="glyphicon glyphicon-plus"></span>

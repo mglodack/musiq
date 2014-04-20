@@ -87,6 +87,7 @@ namespace Musiq.Controllers
                 else
                 {
                     AddErrors(result);
+                    
                 }
             }
 

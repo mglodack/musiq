@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Musiq.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
         private BusinessLogicLayer _context { get; set; }

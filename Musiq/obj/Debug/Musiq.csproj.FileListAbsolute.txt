@@ -123,6 +123,9 @@ C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\obj\Debug\Musiq.csprojResolveAs
 C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\obj\Debug\OnSnap.dll
 C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\obj\Debug\OnSnap.pdb
 C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\bin\taglib-sharp.pdb
+C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\bin\Content\Site.css
+C:\Users\Glodack\Desktop\musiq\Musiq\obj\Debug\Musiq.csprojResolveAssemblyReference.cache
+C:\Users\Glodack\Desktop\musiq\Musiq\bin\Content\Site.css
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\OnSnap.dll.config
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\OnSnap.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\OnSnap.pdb
@@ -130,6 +133,7 @@ C:\Users\Glodack\Desktop\musiq\Musiq\bin\Antlr3.Runtime.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\DataAccessLayer.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\EntityFramework.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\EntityFramework.SqlServer.dll
+C:\Users\Glodack\Desktop\musiq\Musiq\bin\ICSharpCode.SharpZipLib.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\Microsoft.AspNet.Identity.Core.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\Microsoft.AspNet.Identity.Owin.dll
@@ -183,7 +187,5 @@ C:\Users\Glodack\Desktop\musiq\Musiq\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Glodack\Desktop\musiq\Musiq\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Glodack\Desktop\musiq\Musiq\obj\Debug\Musiq.csprojResolveAssemblyReference.cache
 C:\Users\Glodack\Desktop\musiq\Musiq\obj\Debug\OnSnap.dll
 C:\Users\Glodack\Desktop\musiq\Musiq\obj\Debug\OnSnap.pdb
-C:\Users\Julio Garcia\Desktop\Github\musiq\Musiq\bin\Content\Site.css

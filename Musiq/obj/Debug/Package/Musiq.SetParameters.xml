@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <setParameter name="IIS Web Application Name" value="Default Web Site/Musiq_deploy" />
-  <setParameter name="MusiqEntities-Web.config Connection String" value="metadata=res://*/Entities.Musiq.csdl|res://*/Entities.Musiq.ssdl|res://*/Entities.Musiq.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=184.168.47.21;initial catalog=jukebox;persist security info=True;user id=juliogarcia93;password=ElGrullo10;multipleactiveresultsets=True;application name=EntityFramework&quot;" />
-  <setParameter name="DefaultConnection-Web.config Connection String" value="Data Source=184.168.47.21;Initial Catalog=jukebox_accounts;User ID=juliogarcia93;Password=ElGrullo10; Integrated Security=False" />
-</parameters>

@@ -26,11 +26,7 @@ namespace DataAccessLayer.Entities
         }
     
         public virtual DbSet<Account> Accounts { get; set; }
-        public virtual DbSet<Image> Images { get; set; }
-        public virtual DbSet<OnSnapAlbum> OnSnapAlbums { get; set; }
-        public virtual DbSet<OnSnapImage> OnSnapImages { get; set; }
         public virtual DbSet<Playlist> Playlists { get; set; }
-        public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<SongPlay> SongPlays { get; set; }
         public virtual DbSet<Song> Songs { get; set; }
     }

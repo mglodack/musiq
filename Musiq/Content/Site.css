@@ -282,6 +282,22 @@ input[type="button"],select{
     margin:0 auto;
     width:25%;
 }
+.login-register{
+    height:0px;
+}
+.form-control-login-show-setup, .form-control-login-hide-setup {
+  -webkit-transition:all linear 0.9s;
+  -moz-transition:all linear 0.9s;
+  -ms-transition:all linear 0.9s;
+  -o-transition:all linear 0.9s;
+  transition:all linear 0.9s;
+}
+
+.form-control-login-show-setup { opacity:0; height: 0; }
+.form-group-show-setup.box-show-start { opacity:1; height: 100px; }
+
+.form-control-login-hide-setup { opacity:1; height: 0; }
+.form-control-login-hide-setup.form-control-login-hide-start { opacity:0; height: 100px; }
 
 #registered {
 margin-top: 8px;

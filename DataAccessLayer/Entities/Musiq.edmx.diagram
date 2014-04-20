@@ -6,23 +6,14 @@
     <edmx:Diagrams>
       <Diagram DiagramId="e661aa9f01af4a888e1ce34447e452f2" Name="Diagram1">
         <EntityTypeShape EntityType="jukeboxModel.Account" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="jukeboxModel.Image" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="jukeboxModel.OnSnapAlbum" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="jukeboxModel.OnSnapImage" Width="1.5" PointX="7.5" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="jukeboxModel.Playlist" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="jukeboxModel.Room" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="jukeboxModel.SongPlay" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jukeboxModel.Song" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
-        <AssociationConnector Association="jukeboxModel.FK_AccountRoom" ManuallyRouted="false" />
-        <AssociationConnector Association="jukeboxModel.FK_RoomAccount" ManuallyRouted="false" />
         <AssociationConnector Association="jukeboxModel.FK_SongPlays_Accounts" ManuallyRouted="false" />
-        <AssociationConnector Association="jukeboxModel.FK_RoomSong" ManuallyRouted="false" />
         <AssociationConnector Association="jukeboxModel.FK_SongPlays_Songs" ManuallyRouted="false" />
         <AssociationConnector Association="jukeboxModel.AccountAccount" ManuallyRouted="false" />
-        <AssociationConnector Association="jukeboxModel.AccountAlbum" ManuallyRouted="false" />
         <AssociationConnector Association="jukeboxModel.AccountPlaylist" ManuallyRouted="false" />
         <AssociationConnector Association="jukeboxModel.AccountSong" ManuallyRouted="false" />
-        <AssociationConnector Association="jukeboxModel.AlbumImage" ManuallyRouted="false" />
         <AssociationConnector Association="jukeboxModel.SongPlaylist" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

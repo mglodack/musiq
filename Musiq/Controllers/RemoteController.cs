@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Musiq.Controllers
 {
+    [Authorize]
     public class RemoteController : Controller
     {
         //

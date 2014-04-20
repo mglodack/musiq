@@ -1,90 +1,68 @@
-﻿@{
+﻿@model DataAccessLayer.Models.AccountModel
+@{
     ViewBag.Title = "Home Page";
 }
 <body id="login_page">
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <header>
-                <h1 class="home-title">urMusiQ</h1>
-            </header>
+    <div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <header>
+                    <h1 class="home-title">urMusiQ</h1>
+                </header>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-centered margintop">
+                
+                @using (Html.BeginForm("Verify", "Login", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.ValidationSummary()
+                    <input ng-init="login = true" value="{{login}}" id="login" name="login" hidden />
+                    <div ng-hide="login" class="form-group">
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control-login site-font login-width" })
+                    </div>
+                    <div ng-hide="login" class="form-group">
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control-login site-font login-width" })
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control-login site-font login-width" })
+                    </div>
+                    <div class="form-group">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control-login site-font login-width" })
+                    </div>
+                    <div ng-hide="login" class="form-group">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control-login site-font login-width" })
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Log in" class="btn btn-default" />
+                    </div>
+                    <div class="form-group login-width" style="max-width:260px; margin:0 auto;">
+                        <span>Don't have an account?</span>
+                        <a ng-click="login = !login" id="register_link" class="pull-right" style="margin-left: 2px; margin-right: 6px;" href="#">Register</a>
+                    </div>
+                }
+            </div>
         </div>
     </div>
-    <div class="row text-center">
-        <div class="col-centered margintop">
-            <form class="form-horizontal">
-                <fieldset class="fieldset-login login">
-                    <input class="form-control-login site-font login-width" id="username" type="text" placeholder="Username" autofocus required>
+    @*<script>
+        var musiq = angular.module('LoginApp', []);
+        musiq.controller('LoginController', ['$scope',
+            function ($scope) {
+                $scope.login = true;
+                console.log($scope.login);
+            }
+        ]);
+        //$(document).ready(function (e) {
+            
+        //    var musiqApp = angular.module('musiqApp', []);
 
-                </fieldset>
-                <fieldset class="fieldset-login login">
-                    <input class="form-control-login site-font login-width" id="password" type="password" placeholder="Password" required>
-                </fieldset>
-                <fieldset id="login2" style="visibility:hidden; height:0px;">
-                    <input class="form-control-login site-font login-width" id="confirnPassword" type="password" placeholder="Confirm Password" required>
-                </fieldset>
-                <fieldset id="login">
-                    <input class="login-btn site-font login-width" type="button" value="Log In">
-                </fieldset>
-                <fieldset class="register" id="registered" style="margin-top:8px;" ><span>Don't have an account?</span>
-                    <a id="register_link" class="pull-right" style="margin-left: 2px; margin-right: 6px;" href="#">Register</a>
-                </fieldset>
-            </form>
-        </div>
-    </div>
-    <script>
-        var logIn = true;
-        $(document).ready(function () {
-            $('#register_link').click(function () {
-                if (!logIn) {
-                    logIn = true;
-                    $('#login2').css('visibility', 'visible');
-                    $('#login2').animate({
-                        height: "74px"
-                    },300);
-                    $('.login-btn').attr('value', 'Register');
-                    $("#registered span").text('Already have an Account?')
-                        $('#registered a').text('Log In');
-                    //$("#register_link").text('Already have an Account? Log In');
-                    
-                }
-                else {
-                    logIn = false;
-                    $('#login2').css('visibility', 'hidden');
-                    $('#login2').animate({
-                        height: "0px"
-                    }, 300);
-                    $('.login-btn').attr('value', 'Log In');
-                    $("#registered span").text("Don't have an Account?")
-                    $('#registered a').text('Register');
-                    
-                }
-            });
+        //    musiqApp.controller('MainController', ['$http', '$scope',
+        //        function ($http, $scope) {
+        //            $scope.login = true;
+        //            console.log($scope.login);
+        //        }]);
+        //});
 
-            $('.login-btn').click(function (e) {
-                var username = $('#username').val();
-                var password = $('#password').val();
-                var confirmPassword = $('#confirmPassword').val();
-                if (logIn) {
-                    $.ajax({
-                        url: "/Account/Login",
-                        data: { username: username, password: password},
-                        success: function (data) {
-                        }
-                    });
-                }
-                else {
-                    $.ajax({
-                        url: "/Account/Register",
-                        data: { username: username, password: password },
-                        success: function (data) {
-                        }
-                    });
-                }
-            });
-
-        });
-    </script>
+    </script>*@
+    
 </body>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

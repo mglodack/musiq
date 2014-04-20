@@ -44,5 +44,40 @@ namespace DataAccessLayer.BusinessLogicLayer
             SongModel song = _context.GetSongs().FirstOrDefault(s => s.FilePath == fileName);
             return song;
         }
+
+        /**Login**/
+        public bool AccountExist(string username)
+        {
+            return GetAccounts().Any(s => s.Username == username);
+        }
+        public bool AccountExist(string username, string password)
+        {
+            return GetAccounts().Any(s => s.Username == username && s.Password == password);
+        }
+        public List<AccountModel> GetAccounts()
+        {
+            var list = _context.GetAccounts().ToList();
+            return list;
+        }
+
+        public AccountModel GetAccount(string username)
+        {
+            AccountModel account = _context.GetAccounts().Single(a => a.Username == username);
+            return account;
+        }
+        public bool AddAccount(AccountModel account)
+        {
+            if (!AccountExist(account.Username))
+            {
+                _context.AddAccount(account);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+        }
     }
 }
