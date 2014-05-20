@@ -1,4 +1,5 @@
-﻿using Jukebox.Repositories;
+﻿using DataAccessLayer.BusinessLogicLayer;
+using Jukebox.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,10 @@ namespace Musiq.Controllers
         [Route("login/{username}/{password}")]
         [HttpGet]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public async Task<object> AccountExists(string username, string password)
+        public object AccountExists(string username, string password)
         {
-            AccountRepository _context = new AccountRepository();
-            if (await _context.AccountExists(username, password))
+            BusinessLogicLayer _context = new BusinessLogicLayer();
+            if (_context.AccountExist(username, password))
             {
                 var result = new { loginValid = true };
                 return result;

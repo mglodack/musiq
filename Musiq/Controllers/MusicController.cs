@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.BusinessLogicLayer;
+using DataAccessLayer.LuceneSearch;
 using DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace Musiq.Controllers
         public JsonResult Upload()
         {
             int songsUploadedSucessfully = 0;
-            var results = new List<SongUploadMetadata>();
+            var results = new List<SongModel>();
             for (int i = 0; i < Request.Files.Count; i++)
             {
                 var file = Request.Files[i];
@@ -37,14 +38,15 @@ namespace Musiq.Controllers
                     ++songsUploadedSucessfully;
                     if (song != null)
                     {
-                        SongUploadMetadata metadata = new SongUploadMetadata() { SongTitle = song.SongTitle, size = file.ContentLength, Album = song.Album, Artist = song.Artist, Length = song.Length };
-                        results.Add(metadata);
+                        //SongUploadMetadata metadata = new SongUploadMetadata() { SongTitle = song.SongTitle, size = file.ContentLength, Album = song.Album, Artist = song.Artist, Length = song.Length };
+                       
+                        results.Add(song);
                     }
-                    else
-                    {
-                        SongUploadMetadata metadata = new SongUploadMetadata() { size = file.ContentLength };
-                        results.Add(metadata);
-                    }
+                    //else
+                    //{
+                    //    SongUploadMetadata metadata = new SongUploadMetadata() { size = file.ContentLength };
+                    //    results.Add(metadata);
+                    //}
                 }
 
             }
@@ -74,7 +76,16 @@ namespace Musiq.Controllers
             }
             song = new SongModel(username, fileName, metadata.Tag.Title, Artist, metadata.Tag.Album, metadata.Tag.Genres.FirstOrDefault(), Duration, 0);
             _context.Add(song);
+            LuceneSearch.AddUpdateLuceneIndex(_context.GetSong(fileName));
             return song;
+        }
+
+        [AllowAnonymous]
+        public PartialViewResult Search(string query)
+        {
+            IEnumerable<SongModel> songs = LuceneSearch.Search(query, "");
+            return PartialView("_LuceneSearchResults", songs);
+
         }
 
 	}

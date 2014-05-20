@@ -19,8 +19,15 @@ namespace DataAccessLayer.BusinessLogicLayer
 
         public List<SongModel> GetSongs()
         {
-            var list = _context.GetSongs().ToList();
-            return list;
+            var list = _context.GetSongs();
+            if (list != null)
+            {
+                return list.ToList();
+            }        
+            else
+            {
+                return null;
+            }
         }
 
         public List<SongModel> GetSongs(int numberOfSongs)

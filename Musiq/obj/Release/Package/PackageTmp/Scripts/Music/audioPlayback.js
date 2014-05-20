@@ -1,5 +1,9 @@
-﻿$(document).ready(function () {
+﻿var socket;
+
+$(document).ready(function () {
+
     var audio;
+    var remotePlaylist;
     var playlist;
     var tracks;
     var current;
@@ -33,6 +37,9 @@
                 current = tracks.index(newShuffle[current]);
             }
         });
+
+
+
         playlist.find('tbody tr').click(function (e) {
             e.preventDefault();
             if (/Android|webOS|iPhone|iPad|iPod|Blackberry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -77,6 +84,95 @@
             current = (link.index());
             run($(link), audio[0]);
         });
+
+        socket = io.connect("ec2-54-186-101-149.us-west-2.compute.amazonaws.com:9123");
+        socket.on('connect', function () {
+            socket.on('message', function (msg) {
+                console.log(msg);
+                var command = JSON.parse(msg);
+                // This is where the magic is!
+                var song = $(playlist.find("[data-songid='" + command.id + "']"));
+                $(song).trigger('dblclick');
+
+            });
+            socket.on('musicToggle', function (e) {
+                console.log("Request Received")
+                musicPlayer = document.getElementById("audio");
+                var isPaused = musicPlayer.paused;
+                if (isPaused) {
+                    musicPlayer.play();
+                }
+                else {
+                    musicPlayer.pause();
+                }
+            });
+            socket.on('previousSong', function (e) {
+                previousSong();
+            });
+            socket.on('nextSong', function (e) {
+                nextSong();
+            });
+            socket.on('songChanged', function (data) {
+                console.log(data);
+            });
+            socket.on('volumeChanged', function (data) {
+                var response = JSON.parse(msg);
+                musicPlayer = document.getElementById("audio");
+                musicPlayer.volume = response.volume;
+            });
+
+
+        });
+
+        remotePlaylist = $('#remote-playlist');
+        remotePlaylist.find('tbody tr').click(function (e) {
+            e.preventDefault();
+
+            var command = {
+                id: $(this).data('songid'),
+                action: "dblclick"
+            };
+            
+            socket.send(JSON.stringify(command));
+        });
+
+        $('#uploadButton').click(function (e) {
+            socket.emit('nextSong');
+        });
+
+        $('#full-search').keyup(function (e) {
+            if (event.keyCode == 13) {
+                search(true);
+            }
+            else {
+                delay(function () {
+                    search(true);
+                }, 500);
+            }
+
+        });
+
+        function search(force) {
+            var query = $('#full-search').val();
+            if (!force && query.length < 3 && query != "") return;
+            $.ajax({
+                url: "/Music/Search",
+                data: { query: query },
+                success: function (data) {
+                    $('#lucene-search').html(data);
+                    init();
+                }
+            });
+        }
+
+        var delay = (function () {
+            var timer = 0;
+            return function (callback, ms) {
+                clearTimeout(timer);
+                timer = setTimeout(callback, ms);
+            };
+        })();
+
     }
     //End init
 
@@ -180,6 +276,15 @@
         var artist = selectedRow.data('artist');
         console.log(selectedRow);
 
+        //Send Socket Message
+        var currentSong = {
+            songID: songId,
+            songTitle: song,
+            artist: artist
+        };
+
+        socket.emit('songChanged', currentSong);
+
         if (!isElementVisible(selectedRow)) {
             $('html body').animate({
                 scrollTop: selectedRow.position().top
@@ -198,6 +303,7 @@
             }, 500);
         }
     }
+
 
     //Scroll To Song
     function isElementVisible(elementToBeChecked) {

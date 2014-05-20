@@ -1,46 +1,45 @@
-﻿<div class="loader"></div>
-<div class="uploader" id="fileupload">
-    <a class="btn btn-upload-close btn-margin portrait-hide pull-right" id="upload_close">
-        <span class="glyphicon glyphicon-remove"></span>
-    </a>
-    <div class="uploader-background text-center">
-        <p class="uploader-text">Drop your Music<span style="margin-left:10px;" class="glyphicon glyphicon-music"></span></p>
-    </div>
-</div>
-<div class="musiq-container">
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-md-12">
-            <div class="progress progress-striped active" id="progress">
-                <div class="progress-bar" id="uploadStatus" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+﻿    <div class="loader"></div>
+    <div class="musiq-container">
+        <div class="loader" id="content_loader" ng-show="loading"></div>
+        <div ng-show="profile">
+            <div class="row">
+                <div class="col-lg-8 pull-left" style="padding:0px;">
+                    <input class="form-control" placeholder="Search" ng-model="search" style="width:100%">
+                </div>
+                <div class="col col-lg-4">
+                    <div class="pull-right">
+                        <a class="btn btn-musiq btn-margin mobile-hide" id="uploadButton">
+                            <span class="glyphicon glyphicon-music"></span>
+                            Upload Music
+                        </a>
+                        <a class="btn btn-musiq btn-margin portrait-hide mobile-hide" data-toggle="modal" href="#createPlaylistModal">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            Create Playlist
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @Html.Partial("_MusicPartial")
+            </div>
+        </div>
+        <div ng-show="queue">
+            <div class="row">
+                @Html.Partial("_QueuePartial")
+            </div>
+        </div>
+        <div ng-show="remote">
+            <div class="row">
+                <div class="col-lg-8 pull-left" style="padding:0px;">
+                    <input class="form-control" placeholder="Search" ng-model="search" style="width:100%">
+                </div>
+            </div>
+            <div class="row">
+                @Html.Partial("_RemotePartial")
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-8 pull-left" style="padding:0px;">
-            <input class="form-control" placeholder="Search" ng-model="search" style="width:100%">
-        </div>
-        <div class="col col-lg-4">
-            <div class="pull-right">
-                <a class="btn btn-musiq btn-margin mobile-hide" @*data-toggle="modal" href="#uploadMusicModal"*@ id="uploadButton">
-                    <span class="glyphicon glyphicon-music"></span>
-                    Upload Music
-                </a>
-                <a class="btn btn-musiq btn-margin portrait-hide mobile-hide" data-toggle="modal" href="#createPlaylistModal">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    Create Playlist
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="row" id="table">
-        @Html.Partial("_MusicPartial")
-    </div>
-</div>
-@*<div class="md-overlay">
-    <h1 class="upload-drop">Drop Music<span class="glyphicon glyphicon-music"></span></h1>
-</div>*@
-@Html.Partial("_ProfileModals")
-
+    @Html.Partial("_ProfileModals")
 @section Scripts {
 <script type="text/javascript" src="~/Scripts/Upload/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="~/Scripts/Upload/jquery.iframe-transport.js"></script>
@@ -55,6 +54,7 @@
                 event.preventDefault();
                 $('.uploader').fadeOut('slow');
             });
+            $('.loader').fadeOut('slow');
         });
         $('.uploader').on(
     'dragover',
@@ -77,8 +77,9 @@
         $('.uploader').fadeOut('slow');
     }
 );
-    </script>
+</script>
 <script>
+
     $(function () {
         $('#fileupload').fileupload({
             dataType: 'json',
@@ -88,28 +89,27 @@
             //},
             done: function (e, data) {
                 var fragment = document.createDocumentFragment();
-                $.each(data.result, function (index, file) {
-                    var song = file.SongTitle;
-                    var artist = file.Artist;
-                    var album = file.Album;
-                    var length = file.Length;
+                var $scope = angular.element('[ng-controller=MusiqController]').scope();
 
-                    console.log(song);
+                $.each(data.result, function (index, song) {
 
-                    $("#uploaded-songs-table > tbody:last").append('<tr><td>' + song + '</td><td>' + artist + '</td><td>' + album + '</td><td>' + length + '</td>');
+                    $scope.$apply(function () {
+                        console.log(song);
+                        $scope.songs.splice(0, 0, song);
+                    });
+
+                    //$("#uploaded-songs-table > tbody:last").append('<tr><td>' + song + '</td><td>' + artist + '</td><td>' + album + '</td><td>' + length + '</td>');
 
                 });
             },
             progressall: function (e, data) {
-                $('.progress-bar').animate({
-                    height: "20px"
-                }, 200);
-                //$('#progress-bar-table').fadeIn('medium');
+                $('#uploaded-songs-table').fadeIn('medium');
                 var progress = parseInt(data.loaded / data.total * 100, 10);
                 $('#progress .progress-bar').css(
                     'width',
                     progress + '%'
                 );
+
             },
             fail: function (e, data) {
                 // data.errorThrown
@@ -120,6 +120,7 @@
 
         });
     });
+
     //Right-Click Dropdown
     $(function () {
 
@@ -176,5 +177,36 @@
         
     });
 </script>
+@*<script>
+    $(document).ready(function () {
+        var socket = io.connect("ec2-54-186-63-97.us-west-2.compute.amazonaws.com:9123");
+        socket.on('connect', function () {
+            socket.on('message', function (msg) {
+                console.log(msg);
+                //var command = JSON.parse(msg);
+                //// This is where the magic is!
+                //var song = $(playlist.find("[data-songid='" + command.id + "']"));
+                //console.log(song);
+
+            });
+        });
+
+        var remotePlaylist = $('#remote-playlist');
+        remotePlaylist.find('tbody tr').dblclick(function (e) {
+            console.log("double click");
+            e.preventDefault();
+
+            var command = {
+                id: $(this).data('songid'),
+                action: "dblclick"
+            };
+
+            socket.send(JSON.stringify(command));
+        });
+
+    });
+</script>*@
+
+
 
 }

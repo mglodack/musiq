@@ -1,5 +1,4 @@
-﻿<div ng-controller="MusiqController">
-    <div class="loader"></div>
+﻿    <div class="loader"></div>
     <div class="musiq-container">
         <div class="loader" id="content_loader" ng-show="loading"></div>
         <div ng-show="profile">
@@ -41,7 +40,6 @@
         </div>
     </div>
     @Html.Partial("_ProfileModals")
-</div>
 @section Scripts {
 <script type="text/javascript" src="~/Scripts/Upload/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="~/Scripts/Upload/jquery.iframe-transport.js"></script>
@@ -81,6 +79,7 @@
 );
 </script>
 <script>
+
     $(function () {
         $('#fileupload').fileupload({
             dataType: 'json',
@@ -90,15 +89,16 @@
             //},
             done: function (e, data) {
                 var fragment = document.createDocumentFragment();
-                $.each(data.result, function (index, file) {
-                    var song = file.SongTitle;
-                    var artist = file.Artist;
-                    var album = file.Album;
-                    var length = file.Length;
+                var $scope = angular.element('[ng-controller=MusiqController]').scope();
 
-                    console.log(song);
+                $.each(data.result, function (index, song) {
 
-                    $("#uploaded-songs-table > tbody:last").append('<tr><td>' + song + '</td><td>' + artist + '</td><td>' + album + '</td><td>' + length + '</td>');
+                    $scope.$apply(function () {
+                        console.log(song);
+                        $scope.songs.splice(0, 0, song);
+                    });
+
+                    //$("#uploaded-songs-table > tbody:last").append('<tr><td>' + song + '</td><td>' + artist + '</td><td>' + album + '</td><td>' + length + '</td>');
 
                 });
             },

@@ -16,22 +16,22 @@
                 
                 @using (Html.BeginForm("Verify", "Login", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
-                    @Html.ValidationSummary()
+                    @Html.ValidationSummary(true)
                     <input ng-init="login = true" value="{{login}}" id="login" name="login" hidden />
                     <div ng-hide="login" class="form-group">
-                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control-login site-font login-width" })
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control-login site-font login-width", placeholder = "First Name" })
                     </div>
                     <div ng-hide="login" class="form-group">
-                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control-login site-font login-width" })
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control-login site-font login-width", placeholder = "Last Name" })
                     </div>
                     <div class="form-group">
-                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control-login site-font login-width" })
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control-login site-font login-width", placeholder = "Email" })
                     </div>
                     <div class="form-group">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control-login site-font login-width" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control-login site-font login-width", placeholder = "Password" })
                     </div>
                     <div ng-hide="login" class="form-group">
-                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control-login site-font login-width" })
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control-login site-font login-width", placeholder = "Confirm Password" })
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Log in" class="btn btn-default" />

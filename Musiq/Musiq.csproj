@@ -39,10 +39,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -184,6 +180,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\APIControllers\AccountAPIController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\MusicController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RemoteController.cs" />
@@ -211,7 +208,7 @@
     <Content Include="Content\Site.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ICSharpCode.SharpZipLib.dll" />
+    <Content Include="Images\Background\storke-background.jpg" />
     <Content Include="Images\page-loader.gif" />
     <Content Include="Images\profile.png" />
     <Content Include="Scripts\angular-local-storage.js" />
@@ -240,7 +237,9 @@
     <Content Include="Scripts\Upload\jquery.iframe-transport.js" />
     <Content Include="Scripts\Upload\jquery.ui.widget.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -271,11 +270,14 @@
     <Content Include="Views\Shared\_ProfileModals.cshtml" />
     <Content Include="Views\Shared\_QueuePartial.cshtml" />
     <Content Include="Views\Shared\_RemotePartial.cshtml" />
+    <Content Include="Views\Shared\_LuceneSearchResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="lucene_index\" />
     <Folder Include="Music\" />
     <Folder Include="Views\Login\" />
+    <Folder Include="Views\Logout\" />
     <Folder Include="Views\Music\" />
     <Folder Include="Views\Queue\" />
   </ItemGroup>

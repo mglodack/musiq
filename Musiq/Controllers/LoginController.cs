@@ -8,6 +8,7 @@ using DataAccessLayer.Models;
 using DataAccessLayer.BusinessLogicLayer;
 using System.Web.Security;
 using Newtonsoft.Json;
+using DataAccessLayer.LuceneSearch;
 
 
 namespace Musiq.Controllers
@@ -19,6 +20,7 @@ namespace Musiq.Controllers
         // GET: /Login/
         public ActionResult Index()
         {
+            LuceneSearch.AddUpdateLuceneIndex(_BusinessLogicLayer.GetSongs());
             return View();
         }
         public ActionResult Verify(AccountModel account, string returnUrl)
@@ -56,6 +58,7 @@ namespace Musiq.Controllers
                 }
                 else
                 {
+                    ModelState.AddModelError("", "Invalid username or password.");
                     return RedirectToAction("Index", "Home");
                 }
             }

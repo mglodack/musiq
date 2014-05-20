@@ -6,6 +6,309 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAiBBQm5PuMUGHdfkX3tBOSgAAAAACAAAAAAAQZgAAAAEAACAAAACpEO8D9FmIgxMMoUS9kuv6SR6mOMWsNuW6n2OW8Ffe3gAAAAAOgAAAAAIAACAAAAAO6q33NoWG+YwTEs9lmL+PeZaKI8Iqe+3XU4kT/Y1fBIAAAADTbaO6eTL/98Dbm/crLH4VHoa28yr5gA++U+VaU7yTtdbkVw72X6rgnn3C2niFAyGqvru0u4ihhWMNA1smFvkeO1yxV9Z0TzyAbHV7Hx3FalSbaZhBKr1lYcE5jgP5aQb//6rwcTYir7AXzbCgREb3h/L921UN00oeJPaDYu6d+kAAAAC9Kkpye6rZJRPI5y4Zw8PRoVkdmu9SCQHOUc66I1jTKPERdl1J5uSY+yo5+xB6hh0PCxZDOtvGFnyINB8QPR4/</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbuSF19DJQUWSvlM9Ayk9uwAAAAACAAAAAAAQZgAAAAEAACAAAABX8dZfiX7jhwie3oJK1X/y0NcDAnctUZOMZ+dWEt4V4QAAAAAOgAAAAAIAACAAAABIUvBu+t/rYDhTG3NiVZJ74S4c2JlhHRZACkpkrx8DPiAAAABiPSJQU2sDRKKi/KdudbBsdpHnmsM9r4l6H6gYVNuP+UAAAAB+6iKj7ZfOycT8gAeuhiGlYuMWfiOVlXg3SEwNV6fLajq4BvIu9Uxvzj2ohKlsjTfBYZP4XsxqPTatZ29zoTMx</EncryptedPassword>
+    <_PublishTargetUrl>ftp://www.ucsbjukebox.info/urmusiq</_PublishTargetUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>04/12/2014 12:55:58</publishTime>
+    </File>
+    <File Include="bin/Content/Site.css">
+      <publishTime>04/27/2014 17:24:48</publishTime>
+    </File>
+    <File Include="bin/DataAccessLayer.dll">
+      <publishTime>05/12/2014 17:05:52</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>04/12/2014 12:56:05</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>04/12/2014 12:56:05</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>05/12/2014 14:59:19</publishTime>
+    </File>
+    <File Include="bin/Lucene.Net.dll">
+      <publishTime>05/12/2014 14:59:19</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>04/12/2014 12:56:13</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>04/12/2014 12:56:13</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>04/12/2014 12:56:13</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>04/12/2014 12:56:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>04/12/2014 12:56:15</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>04/12/2014 12:56:16</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>04/12/2014 12:56:15</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
+      <publishTime>04/12/2014 12:56:16</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Google.dll">
+      <publishTime>04/12/2014 12:56:17</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
+      <publishTime>04/12/2014 12:56:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>04/12/2014 12:56:16</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
+      <publishTime>04/12/2014 12:56:17</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>04/12/2014 12:55:53</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>04/12/2014 12:55:56</publishTime>
+    </File>
+    <File Include="bin/OnSnap.dll">
+      <publishTime>05/12/2014 17:06:38</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>04/12/2014 12:56:14</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>04/12/2014 12:56:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>04/12/2014 12:55:52</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>04/12/2014 12:56:01</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>04/12/2014 12:56:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>04/12/2014 12:55:53</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>04/12/2014 12:55:51</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>04/12/2014 12:55:50</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>04/12/2014 12:55:52</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>04/12/2014 12:55:52</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>04/12/2014 12:55:52</publishTime>
+    </File>
+    <File Include="bin/taglib-sharp.dll">
+      <publishTime>04/19/2014 03:09:23</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>04/12/2014 12:55:58</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>04/19/2014 03:20:37</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css.map">
+      <publishTime>04/19/2014 03:20:37</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>04/19/2014 03:20:37</publishTime>
+    </File>
+    <File Include="Content/Helvetica-Light.ttf">
+      <publishTime>04/12/2014 20:47:24</publishTime>
+    </File>
+    <File Include="Content/images/juliogarcia.jpg">
+      <publishTime>04/20/2014 15:53:15</publishTime>
+    </File>
+    <File Include="Content/images/Koala.jpg">
+      <publishTime>04/13/2014 01:54:07</publishTime>
+    </File>
+    <File Include="Content/images/Mainpage.png">
+      <publishTime>04/13/2014 01:54:07</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>04/27/2014 17:24:48</publishTime>
+    </File>
+    <File Include="Controllers/APIControllers/AccountAPIController.cs">
+      <publishTime>05/07/2014 20:03:17</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>04/12/2014 12:55:29</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>04/12/2014 12:55:36</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>04/12/2014 12:55:36</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>04/12/2014 12:55:36</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>04/12/2014 12:55:35</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>04/12/2014 14:30:24</publishTime>
+    </File>
+    <File Include="Images/Background/storke-background.jpg">
+      <publishTime>04/27/2014 17:11:29</publishTime>
+    </File>
+    <File Include="Images/page-loader.gif">
+      <publishTime>04/12/2014 19:50:36</publishTime>
+    </File>
+    <File Include="Images/profile.png">
+      <publishTime>04/20/2014 15:53:15</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>05/12/2014 14:58:38</publishTime>
+    </File>
+    <File Include="Scripts/angular-local-storage.js">
+      <publishTime>04/14/2014 17:56:16</publishTime>
+    </File>
+    <File Include="Scripts/angular-route.min.js">
+      <publishTime>04/13/2014 09:55:51</publishTime>
+    </File>
+    <File Include="Scripts/angular.min.js">
+      <publishTime>04/12/2014 16:47:07</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>04/12/2014 12:55:35</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>04/12/2014 12:55:35</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>04/12/2014 12:55:38</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>04/12/2014 12:55:38</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>04/12/2014 12:55:38</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>04/12/2014 12:56:18</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>04/12/2014 12:56:18</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>04/12/2014 12:56:19</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>04/12/2014 12:56:19</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>04/12/2014 12:55:54</publishTime>
+    </File>
+    <File Include="Scripts/Music/audioPlayback.js">
+      <publishTime>05/19/2014 22:37:17</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>04/12/2014 12:55:59</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>04/12/2014 12:55:59</publishTime>
+    </File>
+    <File Include="Scripts/socket.io.min.js">
+      <publishTime>04/19/2014 01:39:19</publishTime>
+    </File>
+    <File Include="Scripts/Upload/jquery.fileupload.js">
+      <publishTime>04/12/2014 21:44:02</publishTime>
+    </File>
+    <File Include="Scripts/Upload/jquery.iframe-transport.js">
+      <publishTime>04/12/2014 21:40:46</publishTime>
+    </File>
+    <File Include="Scripts/Upload/jquery.ui.widget.js">
+      <publishTime>04/12/2014 21:40:46</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>04/19/2014 01:39:38</publishTime>
+    </File>
+    <File Include="Views/Account/ExternalLoginConfirmation.cshtml">
+      <publishTime>04/12/2014 14:35:29</publishTime>
+    </File>
+    <File Include="Views/Account/ExternalLoginFailure.cshtml">
+      <publishTime>04/12/2014 12:56:03</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>04/20/2014 17:02:28</publishTime>
+    </File>
+    <File Include="Views/Account/Manage.cshtml">
+      <publishTime>04/12/2014 14:35:29</publishTime>
+    </File>
+    <File Include="Views/Account/Register.cshtml">
+      <publishTime>04/20/2014 15:53:15</publishTime>
+    </File>
+    <File Include="Views/Account/_ChangePasswordPartial.cshtml">
+      <publishTime>04/12/2014 14:35:29</publishTime>
+    </File>
+    <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
+      <publishTime>04/12/2014 12:56:03</publishTime>
+    </File>
+    <File Include="Views/Account/_RemoveAccountPartial.cshtml">
+      <publishTime>04/12/2014 12:56:03</publishTime>
+    </File>
+    <File Include="Views/Account/_SetPasswordPartial.cshtml">
+      <publishTime>04/12/2014 14:35:29</publishTime>
+    </File>
+    <File Include="Views/Home/About.cshtml">
+      <publishTime>04/12/2014 12:55:29</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>04/12/2014 12:55:29</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>04/20/2014 16:59:45</publishTime>
+    </File>
+    <File Include="Views/Profile/Index.cshtml">
+      <publishTime>04/20/2014 18:55:53</publishTime>
+    </File>
+    <File Include="Views/Remote/Index.cshtml">
+      <publishTime>04/14/2014 17:02:10</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>04/12/2014 12:56:02</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>05/12/2014 17:23:25</publishTime>
+    </File>
+    <File Include="Views/Shared/_LoginPartial.cshtml">
+      <publishTime>04/12/2014 12:56:03</publishTime>
+    </File>
+    <File Include="Views/Shared/_LuceneSearchResults.cshtml">
+      <publishTime>05/12/2014 17:31:00</publishTime>
+    </File>
+    <File Include="Views/Shared/_MusicPartial.cshtml">
+      <publishTime>05/12/2014 16:03:55</publishTime>
+    </File>
+    <File Include="Views/Shared/_ProfileModals.cshtml">
+      <publishTime>04/13/2014 06:15:06</publishTime>
+    </File>
+    <File Include="Views/Shared/_QueuePartial.cshtml">
+      <publishTime>04/18/2014 23:44:07</publishTime>
+    </File>
+    <File Include="Views/Shared/_RemotePartial.cshtml">
+      <publishTime>04/19/2014 01:33:17</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>04/12/2014 14:35:29</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>04/12/2014 12:55:29</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>05/12/2014 16:39:55</publishTime>
+    </File>
+  </ItemGroup>
 </Project>

@@ -8,3 +8,17 @@ C:\Users\Glodack\Desktop\musiq\DataAccessLayer\bin\Release\EntityFramework.SqlSe
 C:\Users\Glodack\Desktop\musiq\DataAccessLayer\obj\Release\DataAccessLayer.csprojResolveAssemblyReference.cache
 C:\Users\Glodack\Desktop\musiq\DataAccessLayer\obj\Release\DataAccessLayer.dll
 C:\Users\Glodack\Desktop\musiq\DataAccessLayer\obj\Release\DataAccessLayer.pdb
+C:\Users\Julio Garcia\Desktop\Github\musiq\DataAccessLayer\bin\Release\DataAccessLayer.dll.config
+C:\Users\Julio Garcia\Desktop\Github\musiq\DataAccessLayer\bin\Release\DataAccessLayer.dll
+C:\Users\Julio Garcia\Desktop\Github\musiq\DataAccessLayer\bin\Release\DataAccessLayer.pdb
+C:\Users\Julio Garcia\Desktop\Github\musiq\DataAccessLayer\bin\Release\EntityFramework.dll
+C:\Users\Julio Garcia\Desktop\Github\musiq\DataAccessLayer\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Julio Garcia\Desktop\Github\musiq\DataAccessLayer\bin\Release\EntityFramework.xml
+C:\Users\Julio Garcia\Desktop\Github\musiq\DataAccessLayer\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Julio Garcia\Desktop\Github\musiq\DataAccessLayer\obj\Release\DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\Julio Garcia\Desktop\Github\musiq\DataAccessLayer\obj\Release\DataAccessLayer.dll
+C:\Users\Julio Garcia\Desktop\Github\musiq\DataAccessLayer\obj\Release\DataAccessLayer.pdb
+C:\Users\Julio Garcia\Desktop\Github\musiq\DataAccessLayer\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\Users\Julio Garcia\Desktop\Github\musiq\DataAccessLayer\bin\Release\Lucene.Net.dll
+C:\Users\Julio Garcia\Desktop\Github\musiq\DataAccessLayer\bin\Release\Lucene.Net.pdb
+C:\Users\Julio Garcia\Desktop\Github\musiq\DataAccessLayer\bin\Release\Lucene.Net.xml

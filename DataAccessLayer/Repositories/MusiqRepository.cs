@@ -78,6 +78,7 @@ namespace DataAccessLayer.Repositories
             {
                 LoginId = s.AccountId,
                 Username = s.Username,
+                Password = s.Password,
                 FirstName = s.FirstName,
                 LastName = s.LastName,          
                 ProfilePicURL = s.ProfilePicURL
